@@ -13,7 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.Getapcs.Trans.BASECLASS.TestBase;
 import com.Getapcs.Trans.HomeLogin.HomePage;
 
-public class Process extends TestBase {
+public class Process_Create extends TestBase {
 
 	@FindBy(xpath = "(//i[@class='mdi mdi-pencil edit-icon'])[1]")
 	WebElement editButton;
@@ -47,7 +47,7 @@ public class Process extends TestBase {
 	@FindBy(xpath = "(//button[normalize-space()='Save'])[1]")
 	WebElement saveButton;
 
-	public Process() {
+	public Process_Create() {
 
 		PageFactory.initElements(driver, this);
 	}
