@@ -56,20 +56,20 @@ public class PrimaryMaster extends TestBase {
 		driver.navigate().to("https://avision-demo.getapcs.com/dashboard");
 	}
 
-//	@Test(priority = 2)
-//	public void verifyCompanyMasterEdit() throws InterruptedException, AWTException {
-//		homePage.clickOnCompanyMasterEdit();
-//
-//		homePage = CompanyMaster.CompanyMasterEdit("Test comName1", "Test comAlias1", "Test address1", " Test city1",
-//				"Test state1", "Test code1", " boardnum1", " www.google.com", "wyz12@mail.com", " 68753",
-//				"TEST Cell Name1", "9498789876", "080-054765", "TEST First Name1", "TEST Designation1", "9498789876",
-//				"9", "TEST Last Name", "admin@1mail.com", "TEST Address1", "9", "gavs66822", "TEST Branch1",
-//				"8786745778", "sgdv76217798", "kh98", "jhhjdc", "999999", "TEST Special Terms1", "99999", "9",
-//				"TEST Icr1", "10", "skill1", " 10", "101", "floor1", "machine2", " tools1", "sqft2", "approved1");
-//		Thread.sleep(1000);
-//		driver.navigate().to("https://demo_keus.getapcs.com/dashboard");
-//
-//	}
+	@Test(priority = 2)
+	public void verifyCompanyMasterEdit() throws InterruptedException, AWTException {
+		homePage.clickOnCompanyMasterEdit();
+
+		homePage = CompanyMaster.CompanyMasterEdit("Test comName1", "Test comAlias1", "Test address1", " Test city1",
+				"Test state1", "Test code1", " boardnum1", " www.google.com", "wyz12@mail.com", " 68753",
+				"TEST Cell Name1", "9498789876", "080-054765", "TEST First Name1", "TEST Designation1", "9498789876",
+				"9", "TEST Last Name", "admin@1mail.com", "TEST Address1", "9", "gavs66822", "TEST Branch1",
+				"8786745778", "sgdv76217798", "kh98", "jhhjdc", "999999", "TEST Special Terms1", "99999", "9",
+				"TEST Icr1", "10", "skill1", " 10", "101", "floor1", "machine2", " tools1", "sqft2", "approved1");
+		Thread.sleep(1000);
+		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+
+	}
 
 	@Test(priority = 3)
 	public void verifyCustomerCreate() throws InterruptedException, AWTException {
@@ -83,7 +83,7 @@ public class PrimaryMaster extends TestBase {
 				"10000", "10", "TEST Icr", "10", "skill", " 10", "10", "floor", "machine1", " tools", "sqft1", "erp2",
 				"osp2", "approved");
 		Thread.sleep(1000);
-		driver.navigate().to("https://avision-demo.getapcs.com/dashboard");
+		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 	}
 //	@Test(priority = 3)
 //	public void verifyCustomerField() throws InterruptedException, AWTException {
@@ -96,7 +96,7 @@ public class PrimaryMaster extends TestBase {
 //				"sgdv762178", "kh27", "jhh", "100000", "TEST Special Terms", "10000", "10", "TEST Icr", "10", "skill",
 //				" 10", "10", "floor", "machine1", " tools", "sqft1", "erp2", "osp2", "approved");
 //		Thread.sleep(1000);
-//		driver.navigate().to("https://avision-demo.getapcs.com/dashboard");
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
 
 //	@Test(priority = 4)
@@ -110,7 +110,7 @@ public class PrimaryMaster extends TestBase {
 //				"8786745778", "sgdv76217798", "kh98", "jhhjdc", "999999", "TEST Special Terms1", "99999", "9",
 //				"TEST Icr1", "10", "skill1", " 9", "101", "floor1", "machine2", " tools1", "sqft2", "approved1");
 //		Thread.sleep(1000);
-//		driver.navigate().to("https://demo_keus.getapcs.com/dashboard");
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //
 //	}
 
@@ -126,7 +126,7 @@ public class PrimaryMaster extends TestBase {
 				" 10", "10", "floor", "machine1", " tools", "sqft1", "erp2", "osp2", "approved");
 
 		Thread.sleep(1000);
-		driver.navigate().to("https://avision-demo.getapcs.com/dashboard");
+		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 	}
 //	@Test(priority = 5)
 //	public void verifyVenderMasterField() throws InterruptedException, AWTException {
@@ -140,7 +140,7 @@ public class PrimaryMaster extends TestBase {
 //				" 10", "10", "floor", "machine1", " tools", "sqft1", "erp2", "osp2", "approved");
 //
 //		Thread.sleep(1000);
-//		driver.navigate().to("https://avision-demo.getapcs.com/dashboard");
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
 
 //	@Test(priority = 6)

@@ -55,7 +55,7 @@ public class LoginPage extends TestBase {
 		password.clear();
 		password.sendKeys(pwd);
 		Select select = new Select(selectUnit);
-		select.selectByValue("Hyderabad");
+		select.selectByValue("Bangalore");
 		click(driver, signIn);
 		Thread.sleep(2000);
 		return new HomePage();
