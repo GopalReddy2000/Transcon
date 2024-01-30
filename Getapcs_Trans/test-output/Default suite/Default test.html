@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Jan 29 11:28:20 IST 2024</td>
+<td>Started on:</td><td>Tue Jan 30 14:57:35 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>62 seconds (62774 ms)</td>
+<tr><td>Total time:</td><td>23 seconds (23282 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,111 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED CONFIGURATIONS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.Getapcs.Trans.TEST.PrimaryMaster_Testing.tearDown()'><b>tearDown</b><br>Test class: com.Getapcs.Trans.TEST.PrimaryMaster_Testing</td>
+<td><div><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.85)
+Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;20.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ce1076579de56c935348f9a713f18163, minimizeCurrentWindow {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.85, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\GOPALR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50967}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50967/devtoo..., se:cdpVersion: 121.0.6167.85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ce1076579de56c935348f9a713f18163
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:596)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.minimize(RemoteWebDriver.java:1044)
+	at com.Getapcs.Trans.TEST.PrimaryMaster_Testing.tearDown(PrimaryMaster_Testing.java:161)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
+	at org.testng.TestRunner.invokeTestConfigurations(TestRunner.java:661)
+	at org.testng.TestRunner.afterRun(TestRunner.java:904)
+	at org.testng.TestRunner.run(TestRunner.java:622)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div><a href='#' onClick='toggleBox("stack-trace2107841088", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2107841088'><pre>org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.85)
+Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;20.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ce1076579de56c935348f9a713f18163, minimizeCurrentWindow {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.85, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\GOPALR~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50967}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50967/devtoo..., se:cdpVersion: 121.0.6167.85, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ce1076579de56c935348f9a713f18163
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:596)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.minimize(RemoteWebDriver.java:1044)
+	at com.Getapcs.Trans.TEST.PrimaryMaster_Testing.tearDown(PrimaryMaster_Testing.java:161)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
+	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
+	at org.testng.TestRunner.invokeTestConfigurations(TestRunner.java:661)
+	at org.testng.TestRunner.afterRun(TestRunner.java:904)
+	at org.testng.TestRunner.run(TestRunner.java:622)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>com.Getapcs.Trans.TEST.PrimaryMaster_Testing@773f7880</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-failed'>
 <tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,8 +181,8 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.Getapcs.Trans.TEST.PrimaryMaster.verifyCompanyMaster()'><b>verifyCompanyMaster</b><br>Test class: com.Getapcs.Trans.TEST.PrimaryMaster</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: (//span[normalize-space()=&apos;TEST Type_Of_Company1&apos;])[1]
+<td title='com.Getapcs.Trans.TEST.PrimaryMaster_Testing.verifyCustomerCreate()'><b>verifyCustomerCreate</b><br>Test class: com.Getapcs.Trans.TEST.PrimaryMaster_Testing</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: (//span[normalize-space()=&apos;INDIVIDUAL&apos;])[1]
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;20.0.2&apos;
@@ -98,8 +203,8 @@ Driver info: driver.version: RemoteWebDriver
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
 	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
 	at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:466)
-	at com.Getapcs.Trans.PrimaryMaster.CompanyMaster.CompanyMasterCreate(CompanyMaster.java:530)
-	at com.Getapcs.Trans.TEST.PrimaryMaster.verifyCompanyMaster(PrimaryMaster.java:48)
+	at com.Getapcs.Trans.PrimaryMaster.CustomerMaster.CustomerMasterCreate(CustomerMaster.java:624)
+	at com.Getapcs.Trans.TEST.PrimaryMaster_Testing.verifyCustomerCreate(PrimaryMaster_Testing.java:77)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -126,8 +231,8 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1196836564", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1196836564'><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: (//span[normalize-space()=&apos;TEST Type_Of_Company1&apos;])[1]
+</pre></div><a href='#' onClick='toggleBox("stack-trace23737789", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace23737789'><pre>org.openqa.selenium.NoSuchElementException: Unable to find element with locator By.xpath: (//span[normalize-space()=&apos;INDIVIDUAL&apos;])[1]
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
 System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;20.0.2&apos;
@@ -148,8 +253,8 @@ Driver info: driver.version: RemoteWebDriver
 	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
 	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
 	at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:466)
-	at com.Getapcs.Trans.PrimaryMaster.CompanyMaster.CompanyMasterCreate(CompanyMaster.java:530)
-	at com.Getapcs.Trans.TEST.PrimaryMaster.verifyCompanyMaster(PrimaryMaster.java:48)
+	at com.Getapcs.Trans.PrimaryMaster.CustomerMaster.CustomerMasterCreate(CustomerMaster.java:624)
+	at com.Getapcs.Trans.TEST.PrimaryMaster_Testing.verifyCustomerCreate(PrimaryMaster_Testing.java:77)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -177,8 +282,8 @@ Driver info: driver.version: RemoteWebDriver
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>21</td>
-<td>com.Getapcs.Trans.TEST.PrimaryMaster@63798ca7</td></tr>
+<td>13</td>
+<td>com.Getapcs.Trans.TEST.PrimaryMaster_Testing@773f7880</td></tr>
 </table><p>
 </body>
 </html>

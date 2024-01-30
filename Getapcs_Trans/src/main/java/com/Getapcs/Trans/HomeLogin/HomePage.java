@@ -412,29 +412,30 @@ public class HomePage extends TestBase {
 //PrimaryMaster
 
 	public void clickOnCompanyMasterCreate() throws InterruptedException {
-		threeLinesSideBarIcon.click();
-		primaryMaster.click();
-		companyMaster.click();
-		companyMasterCreate.click();
-		Thread.sleep(4000);
+		click(driver, threeLinesSideBarIcon);
+		click(driver, primaryMaster);
+		click(driver, companyMaster);
+		click(driver, companyMasterCreate);
+		click(driver, threeLinesSideBarIcon);
 	}
 
 	public void clickOnCompanyMasterEdit() throws InterruptedException {
-		threeLinesSideBarIcon.click();
-		primaryMaster.click();
-		companyMaster.click();
-		modifyorView.click();
-		js.executeScript("arguments[0].click()", editButton);
-
-		Thread.sleep(4000);
+		click(driver, threeLinesSideBarIcon);
+		click(driver, primaryMaster);
+		click(driver, companyMaster);
+		click(driver, modifyorView);
+		click(driver, editButton);
+		click(driver, threeLinesSideBarIcon);
 	}
 
 	public void clickOnCustomerMasterCreate() throws InterruptedException {
-		threeLinesSideBarIcon.click();
-		primaryMaster.click();
-		customerMaster.click();
-		customerMasterCreate.click();
-		Thread.sleep(4000);
+		click(driver, threeLinesSideBarIcon);
+		click(driver, primaryMaster);
+		click(driver, companyMaster);
+		click(driver, customerMaster);
+		click(driver, customerMasterCreate);
+		click(driver, threeLinesSideBarIcon);
+		
 	}
 
 	public void clickOnCustomerMasterEdit() throws InterruptedException {

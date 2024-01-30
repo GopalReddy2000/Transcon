@@ -498,7 +498,6 @@ public class CustomerMaster extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 
-	JavascriptExecutor executor = (JavascriptExecutor) driver;
 
 	public HomePage CustomerMasterCreate(String cusId, String cusName, String cusAlias, String add, String cty,
 			String stat, String code, String boardnum, String web, String eml, String generalpin, String cName,
@@ -508,83 +507,40 @@ public class CustomerMaster extends TestBase {
 			String skill, String people, String cacp, String floor, String machine1, String tools, String sqft1,
 			String erp2, String osp2, String approved) throws InterruptedException, AWTException {
 
-		customerId.sendKeys(cusId);
-		// 1Verifying that Item Number Text Field is Enabled or not
-		boolean isEnabledCompanyIdTextField = customerId.isEnabled();
-		assertTrue(isEnabledCompanyIdTextField);
-		boolean isDisabledCompanyIdTextFieldn = !customerId.isEnabled();
-		assertFalse(isDisabledCompanyIdTextFieldn);
+//		customerId.sendKeys(cusId);
+//		// 1Verifying that Item Number Text Field is Enabled or not
+//		boolean isEnabledCompanyIdTextField = customerId.isEnabled();
+//		assertTrue(isEnabledCompanyIdTextField);
+//		boolean isDisabledCompanyIdTextFieldn = !customerId.isEnabled();
+//		assertFalse(isDisabledCompanyIdTextFieldn);
+//
+//		// Verifying that Item Number Text Field is displayed or hidden.
+//		boolean isDisplayedCompanyIdTextField = customerId.isDisplayed();
+//		assertTrue(isDisplayedCompanyIdTextField);
+//		boolean isHiddenCompanyIdTextField = !customerId.isDisplayed();
+//		assertFalse(isHiddenCompanyIdTextField);
+//
+//		// Verifying that Item Number Text Field is Selected or unselected
+//		boolean isSelectedCompanyIdTextField = customerId.isSelected();
+//		assertFalse(isSelectedCompanyIdTextField);
+//		boolean isDeselectedCompanyIdTextField = !customerId.isSelected();
+//		assertTrue(isDeselectedCompanyIdTextField);
+//
+//		// Verifying the Placeholder which is present in CompanyId Name text field.
+//		String displayedTextInCompanyId = customerId.getAttribute("placeholder");
+//
+//		String expected_placeholder1 = "Enter Customer Id";
+//
+//		assertEquals(displayedTextInCompanyId, expected_placeholder1);
 
-		// Verifying that Item Number Text Field is displayed or hidden.
-		boolean isDisplayedCompanyIdTextField = customerId.isDisplayed();
-		assertTrue(isDisplayedCompanyIdTextField);
-		boolean isHiddenCompanyIdTextField = !customerId.isDisplayed();
-		assertFalse(isHiddenCompanyIdTextField);
-
-		// Verifying that Item Number Text Field is Selected or unselected
-		boolean isSelectedCompanyIdTextField = customerId.isSelected();
-		assertFalse(isSelectedCompanyIdTextField);
-		boolean isDeselectedCompanyIdTextField = !customerId.isSelected();
-		assertTrue(isDeselectedCompanyIdTextField);
-
-		// Verifying the Placeholder which is present in CompanyId Name text field.
-		String displayedTextInCompanyId = customerId.getAttribute("placeholder");
-
-		String expected_placeholder1 = "Enter Customer Id";
-
-		assertEquals(displayedTextInCompanyId, expected_placeholder1);
-
+		click(driver, customerName);
+		isSelected(driver, customerName, "customerName");
 		customerName.sendKeys(cusName);
-		// 1Verifying that Item Number Text Field is Enabled or not
-		boolean isEnabledCompanyNameTextField = customerName.isEnabled();
-		assertTrue(isEnabledCompanyNameTextField);
-		boolean isDisabledCompanyNameTextFieldn = !customerName.isEnabled();
-		assertFalse(isDisabledCompanyNameTextFieldn);
+		
 
-		// Verifying that Item Number Text Field is displayed or hidden.
-		boolean isDisplayedCompanyNameTextField = customerName.isDisplayed();
-		assertTrue(isDisplayedCompanyNameTextField);
-		boolean isHiddenCompanyNameTextField = !customerName.isDisplayed();
-		assertFalse(isHiddenCompanyNameTextField);
-
-		// Verifying that Item Number Text Field is Selected or unselected
-		boolean isSelectedCompanyNameTextField = customerName.isSelected();
-		assertFalse(isSelectedCompanyNameTextField);
-		boolean isDeselectedCompanyNameTextField = !customerName.isSelected();
-		assertTrue(isDeselectedCompanyNameTextField);
-
-		// Verifying the Placeholder which is present in CompanyName text field.
-		String displayedTextInCompanyName = customerName.getAttribute("placeholder");
-
-		String expected_placeholder2 = "Enter Customer Name";
-
-		assertEquals(displayedTextInCompanyName, expected_placeholder2);
-
+		click(driver, customerAlias);
+		isSelected(driver, customerAlias, "customerAlias");
 		customerAlias.sendKeys(cusAlias);
-		// 1Verifying that Item Number Text Field is Enabled or not
-		boolean isEnabledCompanyAliasTextField = customerAlias.isEnabled();
-		assertTrue(isEnabledCompanyAliasTextField);
-		boolean isDisabledCompanyAliasTextFieldn = !customerAlias.isEnabled();
-		assertFalse(isDisabledCompanyAliasTextFieldn);
-
-		// Verifying that Item Number Text Field is displayed or hidden.
-		boolean isDisplayedCompanyAliasTextField = customerAlias.isDisplayed();
-		assertTrue(isDisplayedCompanyAliasTextField);
-		boolean isHiddenCompanyAliasTextField = !customerAlias.isDisplayed();
-		assertFalse(isHiddenCompanyAliasTextField);
-
-		// Verifying that Item Number Text Field is Selected or unselected
-		boolean isSelectedCompanyAliasTextField = customerAlias.isSelected();
-		assertFalse(isSelectedCompanyAliasTextField);
-		boolean isDeselectedCompanyAliasTextField = !customerAlias.isSelected();
-		assertTrue(isDeselectedCompanyAliasTextField);
-
-		// Verifying the Placeholder which is present in CompanyAlias text field.
-		String displayedTextInCompanyAlias = customerAlias.getAttribute("placeholder");
-
-		String expected_placeholder3 = "Enter Customer Alias";
-
-		assertEquals(displayedTextInCompanyAlias, expected_placeholder3);
 
 //        //Verify the Hight and Width of the CompanyId and CompanyName Text Field.
 //		int CompanyIdfieldHeightSize = CompanyId.getSize().getHeight();
@@ -608,63 +564,18 @@ public class CustomerMaster extends TestBase {
 //General
 
 		// Verify that CustomerType Field is Displayed or not
-		boolean isDisabledCustomerTypeFieldn = !customerType.isDisplayed();
-		assertFalse(isDisabledCustomerTypeFieldn);
-
-		// Verify that CustomerType Field is clickable or not
-		WebElement CustomerTypeFieldFocusedElement = driver.switchTo().activeElement();
-		boolean CustomerTypeFieldIsSelected = CustomerTypeFieldFocusedElement.equals(customerType);
-		assertFalse(CustomerTypeFieldIsSelected, "CustomerType Text Field is not Selected");
-
-		// Verifying that CustomerType Text Field is Enabled or not
-		boolean isEnabledInspectionIntDaysField = customerType.isEnabled();
-		assertTrue(isEnabledInspectionIntDaysField);
-
-		customerType.sendKeys(Keys.ENTER);
-
-		executor.executeScript("arguments[0].click();", customerTypeSelect);
-
+		click(driver, customerType);
+		isSelected(driver, customerType, "customerType");
+		click(driver, customerTypeSelect);
+		
 		// Verify that Address Field is Displayed or not
-		boolean isDisabledAddressFieldn = !address.isDisplayed();
-		assertFalse(isDisabledAddressFieldn);
-
-		// Verify that Address Field is clickable or not
-		WebElement AddressFieldFocusedElement = driver.switchTo().activeElement();
-		boolean AddressFieldIsSelected = AddressFieldFocusedElement.equals(address);
-		assertFalse(AddressFieldIsSelected, "Address Text Field is not Selected");
-
-		// Verifying that Address Text Field is Enabled or not
-		boolean isEnabledAddressField = address.isEnabled();
-		assertTrue(isEnabledAddressField);
+		click(driver, address);
+		isSelected(driver, address, "address");
 		address.sendKeys(add);
 
-		// Verifying the Placeholder which is present in Address text field.
-		String displayedTextInAddress = address.getAttribute("placeholder");
-
-		String expected_placeholder4 = "Enter Address";
-
-		assertEquals(displayedTextInAddress, expected_placeholder4);
-
 		// Verify that City Field is Displayed or not
-		boolean isDisabledCityFieldn = !city.isDisplayed();
-		assertFalse(isDisabledCityFieldn);
-
-		// Verify that City Field is clickable or not
-		WebElement CityFieldFocusedElement = driver.switchTo().activeElement();
-		boolean CityFieldIsSelected = CityFieldFocusedElement.equals(city);
-		assertFalse(CityFieldIsSelected, "City Text Field is not Selected");
-
-		// Verifying that City Text Field is Enabled or not
-		boolean isEnabledCityField = city.isEnabled();
-		assertTrue(isEnabledCityField);
-
-		// Verifying the Placeholder which is present in City text field.
-		String displayedTextInCity = city.getAttribute("placeholder");
-
-		String expected_placeholder5 = "Enter city";
-
-		assertEquals(displayedTextInCity, expected_placeholder5);
-
+		click(driver, city);
+		isSelected(driver, city, "city");
 		city.sendKeys(cty);
 
 		// Verify that State Field is Displayed or not
@@ -704,7 +615,7 @@ public class CustomerMaster extends TestBase {
 
 		country.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", countrySelect);
+		js.executeScript("arguments[0].click();", countrySelect);
 
 		// Verify that ZipCode Field is Displayed or not
 		boolean isDisabledZipCodeFieldn = !zipCode.isDisplayed();
@@ -743,7 +654,7 @@ public class CustomerMaster extends TestBase {
 
 		segment.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", segmentSelect);
+		js.executeScript("arguments[0].click();", segmentSelect);
 
 		// Verify that boardNumber Field is Displayed or not
 		boolean isDisabledboardNumberFieldn = !boardNumber.isDisplayed();
@@ -826,7 +737,7 @@ public class CustomerMaster extends TestBase {
 
 		currency.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", currencySelect);
+		js.executeScript("arguments[0].click();", currencySelect);
 
 		// Verify that generalPinLocation Field is Displayed or not
 		boolean isDisabledgeneralPinLocationFieldn = !generalPinLocation.isDisplayed();
@@ -865,7 +776,7 @@ public class CustomerMaster extends TestBase {
 
 		typeOfCompany.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", typeOfCompanySelect);
+		js.executeScript("arguments[0].click();", typeOfCompanySelect);
 
 		// Verify that exportUnitType Field is Displayed or not
 		boolean isDisabledexportUnitTypeFieldn = !exportUnitType.isDisplayed();
@@ -882,9 +793,9 @@ public class CustomerMaster extends TestBase {
 
 		exportUnitType.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", exportUnitTypeSelect);
+		js.executeScript("arguments[0].click();", exportUnitTypeSelect);
 
-		executor.executeScript("arguments[0].click();", toggleButton);
+		js.executeScript("arguments[0].click();", toggleButton);
 
 		// Verify that code Field is Displayed or not
 		boolean isDisabledcodeFieldn = !salesManagerCode.isDisplayed();
@@ -970,10 +881,10 @@ public class CustomerMaster extends TestBase {
 
 		shippingMode.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", shippingModeSelect);
+		js.executeScript("arguments[0].click();", shippingModeSelect);
 //Contacts
 
-		executor.executeScript("arguments[0].click();", contacts);
+		js.executeScript("arguments[0].click();", contacts);
 
 		// Verify that salutation Field is Displayed or not
 		boolean isDisabledsalutationFieldn = !salutation.isDisplayed();
@@ -990,7 +901,7 @@ public class CustomerMaster extends TestBase {
 
 		salutation.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", salutationSelect);
+		js.executeScript("arguments[0].click();", salutationSelect);
 
 		// Verify that callName Field is Displayed or not
 		boolean isDisabledcallNameFieldn = !callName.isDisplayed();
@@ -1029,7 +940,7 @@ public class CustomerMaster extends TestBase {
 
 		mobileNumCode.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", mobileNumCodeSelect);
+		js.executeScript("arguments[0].click();", mobileNumCodeSelect);
 
 		// Verify that mobileNum Field is Displayed or not
 		boolean isDisabledmobileNumFieldn = !mobileNum.isDisplayed();
@@ -1075,7 +986,7 @@ public class CustomerMaster extends TestBase {
 
 		landLineNo.sendKeys(llNum);
 
-		executor.executeScript("arguments[0].click();", timeToCall);
+		js.executeScript("arguments[0].click();", timeToCall);
 		timeToCall.sendKeys("12");
 		timeToCall.sendKeys("12");
 
@@ -1138,7 +1049,7 @@ public class CustomerMaster extends TestBase {
 
 		mobileNumCode1.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", mobileNumCode1Select);
+		js.executeScript("arguments[0].click();", mobileNumCode1Select);
 
 		// Verify that mobileNum1 Field is Displayed or not
 		boolean isDisabledmobileNum1Fieldn = !mobileNum1.isDisplayed();
@@ -1221,7 +1132,7 @@ public class CustomerMaster extends TestBase {
 
 		language.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", languageSelect);
+		js.executeScript("arguments[0].click();", languageSelect);
 
 		// Verify that lastName Field is Displayed or not
 		boolean isDisabledlastNameFieldn = !lastName.isDisplayed();
@@ -1260,7 +1171,7 @@ public class CustomerMaster extends TestBase {
 
 		department.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", departmentSelect);
+		js.executeScript("arguments[0].click();", departmentSelect);
 
 		// Verify that email1 Field is Displayed or not
 		boolean isDisabledemail1Fieldn = !email1.isDisplayed();
@@ -1284,13 +1195,13 @@ public class CustomerMaster extends TestBase {
 
 		email1.sendKeys(eml1);
 
-		executor.executeScript("arguments[0].click();", addContacts);
+		js.executeScript("arguments[0].click();", addContacts);
 
 		// **********************//
 
 //RelatedCompanyLink
 
-		executor.executeScript("arguments[0].click();", releatedCustomerLink);
+		js.executeScript("arguments[0].click();", releatedCustomerLink);
 
 		// Verify that company Field is Displayed or not
 		boolean isDisabledcompanyFieldn = !customer.isDisplayed();
@@ -1307,7 +1218,7 @@ public class CustomerMaster extends TestBase {
 
 		customer.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", customerSelect);
+		js.executeScript("arguments[0].click();", customerSelect);
 
 		// Verify that natureOfRelationship Field is Displayed or not
 		boolean isDisablednatureOfRelationshipFieldn = !natureOfRelationship.isDisplayed();
@@ -1325,10 +1236,10 @@ public class CustomerMaster extends TestBase {
 
 		natureOfRelationship.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", natureOfRelationshipSelect);
+		js.executeScript("arguments[0].click();", natureOfRelationshipSelect);
 
 //Addressess		
-		executor.executeScript("arguments[0].click();", addresses);
+		js.executeScript("arguments[0].click();", addresses);
 
 		// Verify that poAddress Field is Displayed or not
 		boolean isDisabledpoAddressFieldn = !billToAddress.isDisplayed();
@@ -1395,7 +1306,7 @@ public class CustomerMaster extends TestBase {
 
 //Shipping Address
 
-		executor.executeScript("arguments[0].click();", shippingAddress);
+		js.executeScript("arguments[0].click();", shippingAddress);
 
 		// Verify that shipToAddress Field is Displayed or not
 		boolean isDisabledshipToAddressFieldn = !shipToAddress.isDisplayed();
@@ -1441,11 +1352,11 @@ public class CustomerMaster extends TestBase {
 
 		googlePinLocation.sendKeys("TEST Google Pin Location");
 
-		executor.executeScript("arguments[0].click();", addShippingAddress);
+		js.executeScript("arguments[0].click();", addShippingAddress);
 
 //Banking
 
-		executor.executeScript("arguments[0].click();", banking);
+		js.executeScript("arguments[0].click();", banking);
 
 		// Verify that bankName1 Field is Displayed or not
 		boolean isDisabledbankName1Fieldn = !bankName.isDisplayed();
@@ -1462,7 +1373,7 @@ public class CustomerMaster extends TestBase {
 
 		bankName.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", bankNameSelect);
+		js.executeScript("arguments[0].click();", bankNameSelect);
 
 		// Verify that branch Field is Displayed or not
 		boolean isDisabledbranchFieldn = !branch.isDisplayed();
@@ -1574,19 +1485,19 @@ public class CustomerMaster extends TestBase {
 
 		ibanCode.sendKeys(Iban);
 
-		executor.executeScript("arguments[0].click();", addBanking);
+		js.executeScript("arguments[0].click();", addBanking);
 
 //Dispatch
 
-		executor.executeScript("arguments[0].click();", dispatch);
+		js.executeScript("arguments[0].click();", dispatch);
 
-		executor.executeScript("arguments[0].click();", partialDispatch);
+		js.executeScript("arguments[0].click();", partialDispatch);
 
 		// Verify that partialDispatch Field is Displayed or not
 		boolean isDisabledpartialDispatch = partialDispatch.isDisplayed();
 		assertTrue(isDisabledpartialDispatch);
 
-		executor.executeScript("arguments[0].click();", dropShipment);
+		js.executeScript("arguments[0].click();", dropShipment);
 
 		// Verify that dropShipment Field is Displayed or not
 		boolean isDisableddropShipment = dropShipment.isDisplayed();
@@ -1607,7 +1518,7 @@ public class CustomerMaster extends TestBase {
 
 		packingInstructions.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", packingInstructionsSelect);
+		js.executeScript("arguments[0].click();", packingInstructionsSelect);
 
 		// Verify that shipmentInstructions1 Field is Displayed or not
 		boolean isDisabledshipmentInstructions1Fieldn = shipmentInstructions1.isDisplayed();
@@ -1633,7 +1544,7 @@ public class CustomerMaster extends TestBase {
 
 		shipmentInstructions1.sendKeys("TEST shipmentInstructions");
 
-		executor.executeScript("arguments[0].click();", podReq);
+		js.executeScript("arguments[0].click();", podReq);
 
 		// Verify that podReq Field is Displayed or not
 		boolean isDisabledpodReq = podReq.isDisplayed();
@@ -1676,7 +1587,7 @@ public class CustomerMaster extends TestBase {
 		Thread.sleep(2000);
 //Terms
 
-		executor.executeScript("arguments[0].click();", terms);
+		js.executeScript("arguments[0].click();", terms);
 
 		// Verify that advance Field is Displayed or not
 		boolean isDisabledadvanceFieldn = !advance.isDisplayed();
@@ -1715,7 +1626,7 @@ public class CustomerMaster extends TestBase {
 
 		paymentTerms.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", paymentTermsSelect);
+		js.executeScript("arguments[0].click();", paymentTermsSelect);
 
 		// Verify that incoTerms Field is Displayed or not
 		boolean isDisabledincoTermsFieldn = !incoTerm.isDisplayed();
@@ -1732,7 +1643,7 @@ public class CustomerMaster extends TestBase {
 
 		incoTerm.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", incoTermSelect);
+		js.executeScript("arguments[0].click();", incoTermSelect);
 
 		// Verify that specialTerms Field is Displayed or not
 		boolean isDisabledspecialTermsFieldn = !specialTerms.isDisplayed();
@@ -1812,41 +1723,41 @@ public class CustomerMaster extends TestBase {
 
 //Satutory
 
-		executor.executeScript("arguments[0].click();", statutory);
+		js.executeScript("arguments[0].click();", statutory);
 
-		executor.executeScript("arguments[0].click();", incorporation);
+		js.executeScript("arguments[0].click();", incorporation);
 
 		// Verify that incorporation Field is Displayed or not
 		boolean isDisabledincorporation = !incorporation.isDisplayed();
 		assertFalse(isDisabledincorporation);
 
-		executor.executeScript("arguments[0].click();", tin);
+		js.executeScript("arguments[0].click();", tin);
 
 		// Verify that tin Field is Displayed or not
 		boolean isDisabledtin = !tin.isDisplayed();
 		assertFalse(isDisabledtin);
 
-		executor.executeScript("arguments[0].click();", gst1);
+		js.executeScript("arguments[0].click();", gst1);
 
-		executor.executeScript("arguments[0].click();", iec);
+		js.executeScript("arguments[0].click();", iec);
 
 		// Verify that iec Field is Displayed or not
 		boolean isDisablediec = !iec.isDisplayed();
 		assertFalse(isDisablediec);
 
-		executor.executeScript("arguments[0].click();", pan1);
+		js.executeScript("arguments[0].click();", pan1);
 
 		// Verify that pan Field is Displayed or not
 		boolean isDisabledpan = !pan1.isDisplayed();
 		assertFalse(isDisabledpan);
 
-		executor.executeScript("arguments[0].click();", udhyamCertificate);
+		js.executeScript("arguments[0].click();", udhyamCertificate);
 
 		// Verify that preferredFreightForwarder Field is Displayed or not
 		boolean isDisabledudhyamCertificate = !incorporation.isDisplayed();
 		assertFalse(isDisabledudhyamCertificate);
 
-		executor.executeScript("arguments[0].click();", msme);
+		js.executeScript("arguments[0].click();", msme);
 
 		// Verify that pan Field is Displayed or not
 		boolean isDisabledmsme = !msme.isDisplayed();
@@ -1882,7 +1793,7 @@ public class CustomerMaster extends TestBase {
 //		
 //Details
 
-		executor.executeScript("arguments[0].click();", details);
+		js.executeScript("arguments[0].click();", details);
 
 		// Verify that turnOver Field is Displayed or not
 		boolean isDisabledturnOverFieldn = !turnOver.isDisplayed();
@@ -1949,7 +1860,7 @@ public class CustomerMaster extends TestBase {
 
 		icra.sendKeys(icr);
 
-		executor.executeScript("arguments[0].click();", headCount1);
+		js.executeScript("arguments[0].click();", headCount1);
 
 		// Verify that headcount Field is clickable or not
 		WebElement headcountFieldFocusedElement = driver.switchTo().activeElement();
@@ -1995,7 +1906,7 @@ public class CustomerMaster extends TestBase {
 
 		noOfPeople.sendKeys(people);
 
-		executor.executeScript("arguments[0].click();", addheadCount);
+		js.executeScript("arguments[0].click();", addheadCount);
 
 		// Verify that capacity Field is Displayed or not
 		boolean isDisabledcapacityFieldn = !capacity.isDisplayed();
@@ -2122,9 +2033,9 @@ public class CustomerMaster extends TestBase {
 
 		uom.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", uomSelect);
+		js.executeScript("arguments[0].click();", uomSelect);
 
-		executor.executeScript("arguments[0].click();", erpToggle);
+		js.executeScript("arguments[0].click();", erpToggle);
 
 		// Verify that erp Field is Displayed or not
 		boolean isDisablederpFieldn = !enterErp.isDisplayed();
@@ -2149,12 +2060,12 @@ public class CustomerMaster extends TestBase {
 		enterErp.sendKeys(erp2);
 
 		WebElement esdSetup = driver.findElement(By.xpath("(//input[@value='yes'])[1]"));
-		executor.executeScript("arguments[0].click();", esdSetup);
+		js.executeScript("arguments[0].click();", esdSetup);
 
 		WebElement hazmatSetup = driver.findElement(By.xpath("(//input[@value='yes'])[2]"));
-		executor.executeScript("arguments[0].click();", hazmatSetup);
+		js.executeScript("arguments[0].click();", hazmatSetup);
 
-		executor.executeScript("arguments[0].click();", ospToggle);
+		js.executeScript("arguments[0].click();", ospToggle);
 
 		// Verify that osp1 Field is Displayed or not
 		boolean isDisabledosp1Fieldn = !enterOsp.isDisplayed();
@@ -2180,7 +2091,7 @@ public class CustomerMaster extends TestBase {
 
 		// Company Approval
 
-		executor.executeScript("arguments[0].click();", customerApproval);
+		js.executeScript("arguments[0].click();", customerApproval);
 
 		// Verify that scopeOfSupply Field is Displayed or not
 		boolean isDisabledscopeOfSupplyFieldn = !scopeOfSupply.isDisplayed();
@@ -2197,7 +2108,7 @@ public class CustomerMaster extends TestBase {
 
 		scopeOfSupply.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", scopeOfSupplySelect);
+		js.executeScript("arguments[0].click();", scopeOfSupplySelect);
 
 //		//Verify that  companyCategory Field is Displayed or not
 //		boolean isDisabledcompanyCategoryFieldn = !companyCategory.isDisplayed(); 
@@ -2232,7 +2143,7 @@ public class CustomerMaster extends TestBase {
 
 		basisOfApproval.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", basisOfApprovalSelect);
+		js.executeScript("arguments[0].click();", basisOfApprovalSelect);
 
 //		executor.executeScript("arguments[0].click();", inventoryItem);
 //		
@@ -2262,7 +2173,7 @@ public class CustomerMaster extends TestBase {
 
 		approvalBy.sendKeys(approved);
 
-		executor.executeScript("arguments[0].click();", reaudit);
+		js.executeScript("arguments[0].click();", reaudit);
 
 		// Verify that reaudit Field is Displayed or not
 		boolean isDisabledreaudit = reaudit.isDisplayed();
@@ -2283,7 +2194,7 @@ public class CustomerMaster extends TestBase {
 
 		auditFrequency.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", auditFrequencySelect);
+		js.executeScript("arguments[0].click();", auditFrequencySelect);
 
 		WebElement approvalDate = driver.findElement(By.xpath("(//input[@placeholder='DD-MM-YYYY'])[1]"));
 		approvalDate.click();
@@ -2419,7 +2330,7 @@ public class CustomerMaster extends TestBase {
 
 		customerType.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", customerTypeSelect);
+		js.executeScript("arguments[0].click();", customerTypeSelect);
 
 		// Verify that Address Field is Displayed or not
 		boolean isDisabledAddressFieldn = !address.isDisplayed();
@@ -2543,7 +2454,7 @@ public class CustomerMaster extends TestBase {
 
 		segment.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", segmentSelect);
+		js.executeScript("arguments[0].click();", segmentSelect);
 
 		// Verify that boardNumber Field is Displayed or not
 		boolean isDisabledboardNumberFieldn = !boardNumber.isDisplayed();
@@ -2626,7 +2537,7 @@ public class CustomerMaster extends TestBase {
 
 		currency.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", currencySelect);
+		js.executeScript("arguments[0].click();", currencySelect);
 
 		// Verify that generalPinLocation Field is Displayed or not
 		boolean isDisabledgeneralPinLocationFieldn = !generalPinLocation.isDisplayed();
@@ -2665,7 +2576,7 @@ public class CustomerMaster extends TestBase {
 
 		typeOfCompany.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", typeOfCompanySelect);
+		js.executeScript("arguments[0].click();", typeOfCompanySelect);
 
 		// Verify that exportUnitType Field is Displayed or not
 		boolean isDisabledexportUnitTypeFieldn = !exportUnitType.isDisplayed();
@@ -2682,9 +2593,9 @@ public class CustomerMaster extends TestBase {
 
 		exportUnitType.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", exportUnitTypeSelect);
+		js.executeScript("arguments[0].click();", exportUnitTypeSelect);
 
-		executor.executeScript("arguments[0].click();", toggleButton);
+		js.executeScript("arguments[0].click();", toggleButton);
 
 		// Verify that code Field is Displayed or not
 		boolean isDisabledcodeFieldn = !salesManagerCode.isDisplayed();
@@ -2770,11 +2681,11 @@ public class CustomerMaster extends TestBase {
 
 		shippingMode.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", shippingModeSelect);
+		js.executeScript("arguments[0].click();", shippingModeSelect);
 //Contacts
 
-		executor.executeScript("arguments[0].click();", contacts);
-		executor.executeScript("arguments[0].click();", contactsTable);
+		js.executeScript("arguments[0].click();", contacts);
+		js.executeScript("arguments[0].click();", contactsTable);
 
 		// Verify that salutation Field is Displayed or not
 		boolean isDisabledsalutationFieldn = !salutation.isDisplayed();
@@ -2791,7 +2702,7 @@ public class CustomerMaster extends TestBase {
 
 		salutation.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", salutationSelect);
+		js.executeScript("arguments[0].click();", salutationSelect);
 
 		// Verify that callName Field is Displayed or not
 		boolean isDisabledcallNameFieldn = !callName.isDisplayed();
@@ -2877,7 +2788,7 @@ public class CustomerMaster extends TestBase {
 		landLineNo.clear();
 		landLineNo.sendKeys(llNum);
 
-		executor.executeScript("arguments[0].click();", timeToCall);
+		js.executeScript("arguments[0].click();", timeToCall);
 		timeToCall.sendKeys("12");
 		timeToCall.sendKeys("12");
 
@@ -3024,7 +2935,7 @@ public class CustomerMaster extends TestBase {
 
 		language.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", languageSelect);
+		js.executeScript("arguments[0].click();", languageSelect);
 
 		// Verify that lastName Field is Displayed or not
 		boolean isDisabledlastNameFieldn = !lastName.isDisplayed();
@@ -3063,7 +2974,7 @@ public class CustomerMaster extends TestBase {
 
 		department.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", departmentSelect);
+		js.executeScript("arguments[0].click();", departmentSelect);
 
 		// Verify that email1 Field is Displayed or not
 		boolean isDisabledemail1Fieldn = !email1.isDisplayed();
@@ -3087,14 +2998,14 @@ public class CustomerMaster extends TestBase {
 		email1.clear();
 		email1.sendKeys(eml1);
 
-		executor.executeScript("arguments[0].click();", update);
+		js.executeScript("arguments[0].click();", update);
 
 		// **********************//
 
 //RelatedCompanyLink
 
-		executor.executeScript("arguments[0].click();", releatedCustomerLink);
-		executor.executeScript("arguments[0].click();", releadtedLinkTable);
+		js.executeScript("arguments[0].click();", releatedCustomerLink);
+		js.executeScript("arguments[0].click();", releadtedLinkTable);
 
 		// Verify that company Field is Displayed or not
 		boolean isDisabledcompanyFieldn = !customer.isDisplayed();
@@ -3111,7 +3022,7 @@ public class CustomerMaster extends TestBase {
 
 		customer.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", customerSelect);
+		js.executeScript("arguments[0].click();", customerSelect);
 
 		// Verify that natureOfRelationship Field is Displayed or not
 		boolean isDisablednatureOfRelationshipFieldn = !natureOfRelationship.isDisplayed();
@@ -3129,13 +3040,13 @@ public class CustomerMaster extends TestBase {
 
 		natureOfRelationship.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", natureOfRelationshipSelect);
-		executor.executeScript("arguments[0].click();", update);
+		js.executeScript("arguments[0].click();", natureOfRelationshipSelect);
+		js.executeScript("arguments[0].click();", update);
 
 //Addressess		
-		executor.executeScript("arguments[0].click();", addresses);
+		js.executeScript("arguments[0].click();", addresses);
 
-		executor.executeScript("arguments[0].click();", addressesTable);
+		js.executeScript("arguments[0].click();", addressesTable);
 
 		// Verify that poAddress Field is Displayed or not
 		boolean isDisabledpoAddressFieldn = !billToAddress.isDisplayed();
@@ -3202,9 +3113,9 @@ public class CustomerMaster extends TestBase {
 
 //Shipping Address
 
-		executor.executeScript("arguments[0].click();", shippingAddress);
+		js.executeScript("arguments[0].click();", shippingAddress);
 
-		executor.executeScript("arguments[0].click();", shippingAddressTable);
+		js.executeScript("arguments[0].click();", shippingAddressTable);
 
 		// Verify that shipToAddress Field is Displayed or not
 		boolean isDisabledshipToAddressFieldn = !shipToAddress.isDisplayed();
@@ -3250,11 +3161,11 @@ public class CustomerMaster extends TestBase {
 		googlePinLocation.clear();
 		googlePinLocation.sendKeys("TEST Google Pin Location");
 
-		executor.executeScript("arguments[0].click();", update);
+		js.executeScript("arguments[0].click();", update);
 
 //Banking
 
-		executor.executeScript("arguments[0].click();", banking);
+		js.executeScript("arguments[0].click();", banking);
 
 		// Verify that bankName1 Field is Displayed or not
 		boolean isDisabledbankName1Fieldn = !bankName.isDisplayed();
@@ -3271,7 +3182,7 @@ public class CustomerMaster extends TestBase {
 
 		bankName.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", bankNameSelect);
+		js.executeScript("arguments[0].click();", bankNameSelect);
 
 		// Verify that branch Field is Displayed or not
 		boolean isDisabledbranchFieldn = !branch.isDisplayed();
@@ -3383,19 +3294,19 @@ public class CustomerMaster extends TestBase {
 		ibanCode.clear();
 		ibanCode.sendKeys(Iban);
 
-		executor.executeScript("arguments[0].click();", addBanking);
+		js.executeScript("arguments[0].click();", addBanking);
 
 //Dispatch
 
-		executor.executeScript("arguments[0].click();", dispatch);
+		js.executeScript("arguments[0].click();", dispatch);
 
-		executor.executeScript("arguments[0].click();", partialDispatch);
+		js.executeScript("arguments[0].click();", partialDispatch);
 
 		// Verify that partialDispatch Field is Displayed or not
 		boolean isDisabledpartialDispatch = partialDispatch.isDisplayed();
 		assertTrue(isDisabledpartialDispatch);
 
-		executor.executeScript("arguments[0].click();", dropShipment);
+		js.executeScript("arguments[0].click();", dropShipment);
 
 		// Verify that dropShipment Field is Displayed or not
 		boolean isDisableddropShipment = dropShipment.isDisplayed();
@@ -3416,7 +3327,7 @@ public class CustomerMaster extends TestBase {
 
 		packingInstructions.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", packingInstructionsSelect);
+		js.executeScript("arguments[0].click();", packingInstructionsSelect);
 
 		// Verify that shipmentInstructions1 Field is Displayed or not
 		boolean isDisabledshipmentInstructions1Fieldn = shipmentInstructions1.isDisplayed();
@@ -3442,7 +3353,7 @@ public class CustomerMaster extends TestBase {
 		shipmentInstructions1.clear();
 		shipmentInstructions1.sendKeys("TEST shipmentInstructions");
 
-		executor.executeScript("arguments[0].click();", podReq);
+		js.executeScript("arguments[0].click();", podReq);
 
 		// Verify that podReq Field is Displayed or not
 		boolean isDisabledpodReq = podReq.isDisplayed();
@@ -3485,7 +3396,7 @@ public class CustomerMaster extends TestBase {
 		Thread.sleep(2000);
 //Terms
 
-		executor.executeScript("arguments[0].click();", terms);
+		js.executeScript("arguments[0].click();", terms);
 
 		// Verify that advance Field is Displayed or not
 		boolean isDisabledadvanceFieldn = !advance.isDisplayed();
@@ -3524,7 +3435,7 @@ public class CustomerMaster extends TestBase {
 
 		paymentTerms.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", paymentTermsSelect);
+		js.executeScript("arguments[0].click();", paymentTermsSelect);
 
 		// Verify that incoTerms Field is Displayed or not
 		boolean isDisabledincoTermsFieldn = !incoTerm.isDisplayed();
@@ -3541,7 +3452,7 @@ public class CustomerMaster extends TestBase {
 
 		incoTerm.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", incoTermSelect);
+		js.executeScript("arguments[0].click();", incoTermSelect);
 
 		// Verify that specialTerms Field is Displayed or not
 		boolean isDisabledspecialTermsFieldn = !specialTerms.isDisplayed();
@@ -3621,41 +3532,41 @@ public class CustomerMaster extends TestBase {
 
 //Satutory
 
-		executor.executeScript("arguments[0].click();", statutory);
+		js.executeScript("arguments[0].click();", statutory);
 
-		executor.executeScript("arguments[0].click();", incorporation);
+		js.executeScript("arguments[0].click();", incorporation);
 
 		// Verify that incorporation Field is Displayed or not
 		boolean isDisabledincorporation = !incorporation.isDisplayed();
 		assertFalse(isDisabledincorporation);
 
-		executor.executeScript("arguments[0].click();", tin);
+		js.executeScript("arguments[0].click();", tin);
 
 		// Verify that tin Field is Displayed or not
 		boolean isDisabledtin = !tin.isDisplayed();
 		assertFalse(isDisabledtin);
 
-		executor.executeScript("arguments[0].click();", gst1);
+		js.executeScript("arguments[0].click();", gst1);
 
-		executor.executeScript("arguments[0].click();", iec);
+		js.executeScript("arguments[0].click();", iec);
 
 		// Verify that iec Field is Displayed or not
 		boolean isDisablediec = !iec.isDisplayed();
 		assertFalse(isDisablediec);
 
-		executor.executeScript("arguments[0].click();", pan1);
+		js.executeScript("arguments[0].click();", pan1);
 
 		// Verify that pan Field is Displayed or not
 		boolean isDisabledpan = !pan1.isDisplayed();
 		assertFalse(isDisabledpan);
 
-		executor.executeScript("arguments[0].click();", udhyamCertificate);
+		js.executeScript("arguments[0].click();", udhyamCertificate);
 
 		// Verify that preferredFreightForwarder Field is Displayed or not
 		boolean isDisabledudhyamCertificate = !incorporation.isDisplayed();
 		assertFalse(isDisabledudhyamCertificate);
 
-		executor.executeScript("arguments[0].click();", msme);
+		js.executeScript("arguments[0].click();", msme);
 
 		// Verify that pan Field is Displayed or not
 		boolean isDisabledmsme = !msme.isDisplayed();
@@ -3690,7 +3601,7 @@ public class CustomerMaster extends TestBase {
 //		assertFalse(isDisablednadcap);
 //		
 
-		executor.executeScript("arguments[0].click();", details);
+		js.executeScript("arguments[0].click();", details);
 
 		// Verify that turnOver Field is Displayed or not
 		boolean isDisabledturnOverFieldn = !turnOver.isDisplayed();
@@ -3942,21 +3853,21 @@ public class CustomerMaster extends TestBase {
 
 		uom.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", uomSelect);
+		js.executeScript("arguments[0].click();", uomSelect);
 
-		executor.executeScript("arguments[0].click();", erpToggle);
+		js.executeScript("arguments[0].click();", erpToggle);
 
 		WebElement esdSetup = driver.findElement(By.xpath("(//input[@value='yes'])[1]"));
-		executor.executeScript("arguments[0].click();", esdSetup);
+		js.executeScript("arguments[0].click();", esdSetup);
 
 		WebElement hazmatSetup = driver.findElement(By.xpath("(//input[@value='yes'])[2]"));
-		executor.executeScript("arguments[0].click();", hazmatSetup);
+		js.executeScript("arguments[0].click();", hazmatSetup);
 
-		executor.executeScript("arguments[0].click();", ospToggle);
+		js.executeScript("arguments[0].click();", ospToggle);
 
 		// Company Approval
 
-		executor.executeScript("arguments[0].click();", customerApproval);
+		js.executeScript("arguments[0].click();", customerApproval);
 
 		// Verify that scopeOfSupply Field is Displayed or not
 		boolean isDisabledscopeOfSupplyFieldn = !scopeOfSupply.isDisplayed();
@@ -3973,7 +3884,7 @@ public class CustomerMaster extends TestBase {
 
 		scopeOfSupply.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", scopeOfSupplySelect);
+		js.executeScript("arguments[0].click();", scopeOfSupplySelect);
 
 //		//Verify that  companyCategory Field is Displayed or not
 //		boolean isDisabledcompanyCategoryFieldn = !companyCategory.isDisplayed(); 
@@ -4008,7 +3919,7 @@ public class CustomerMaster extends TestBase {
 
 		basisOfApproval.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", basisOfApprovalSelect);
+		js.executeScript("arguments[0].click();", basisOfApprovalSelect);
 
 //		executor.executeScript("arguments[0].click();", inventoryItem);
 //		
@@ -4038,7 +3949,7 @@ public class CustomerMaster extends TestBase {
 		approvedBy.clear();
 		approvedBy.sendKeys(approved);
 
-		executor.executeScript("arguments[0].click();", reaudit);
+		js.executeScript("arguments[0].click();", reaudit);
 
 		// Verify that reaudit Field is Displayed or not
 		boolean isDisabledreaudit = reaudit.isDisplayed();
@@ -4059,7 +3970,7 @@ public class CustomerMaster extends TestBase {
 
 		auditFrequency.sendKeys(Keys.ENTER);
 
-		executor.executeScript("arguments[0].click();", auditFrequencySelect);
+		js.executeScript("arguments[0].click();", auditFrequencySelect);
 
 		WebElement approvalDate = driver.findElement(By.xpath("(//input[@placeholder='DD-MM-YYYY'])[1]"));
 
