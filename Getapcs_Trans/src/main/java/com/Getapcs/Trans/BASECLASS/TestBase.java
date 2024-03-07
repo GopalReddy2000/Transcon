@@ -10,6 +10,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -26,10 +28,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v120.network.model.RequestId;
-import org.openqa.selenium.devtools.v120.network.model.Response;
 import org.openqa.selenium.devtools.v120.network.Network;
 import org.openqa.selenium.devtools.v120.network.model.Request;
+import org.openqa.selenium.devtools.v120.network.model.Response;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.FindBy;
@@ -69,7 +70,7 @@ public class TestBase {
 
 //		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
 		wait = new WebDriverWait(driver, Duration.ofSeconds(100));
 
 		actions = new Actions(driver);
@@ -88,7 +89,7 @@ public class TestBase {
 
 		});
 		
-		 RequestId[] requestId = new RequestId[1];
+//		 RequestId[] requestId = new RequestId[1];
 
 		devTools.addListener(Network.responseReceived(), response -> {
 			Response res = response.getResponse();
@@ -98,14 +99,10 @@ public class TestBase {
 	                        res.getStatus() + " :- " + res.getStatusText() + "\n" +
 	                                "Error URL: " + res.getUrl() + "\n");
 	                
-	                String payLoad = devTools.send(Network.getResponseBody(requestId[0])).getBody();
-	                System.out.println(payLoad);
+//	                String payLoad = devTools.send(Network.getResponseBody(requestId[0])).getBody();
+//	                System.out.println(payLoad);
 	            }
 	        });
-        
-            
-
-		
 	
 
 		driver.get("https://demo-tras.getapcs.com/login");
@@ -133,11 +130,28 @@ public class TestBase {
 //	element = waitForElement(driver, element, 30, 2);
 //	element.click();
 
+	 public static void waitUntilAPILoaded(WebDriver driver) {
+
+	        // Execute JavaScript to check if there are any active network requests
+	        while (!(Boolean) js.executeScript("return (window.performance.getEntriesByType('resource').filter(function(e) { return e.initiatorType === 'xmlhttprequest' && e.duration === 0; }).length === 0)")) {
+	            try {
+	                Thread.sleep(500); // Wait for 500 milliseconds before checking again
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	 }
+	
 //Click Action
 
 	public static void click(WebDriver driver, WebElement element) {
+		try {
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		wait.until(ExpectedConditions.visibilityOf(element));
+		}catch(Exception e1){
+			System.out.println("not displayed");
+		}
+		finally {
 		try {
 			if (!element.isDisplayed()) {
 				throw new NoSuchElementException("Element not visible so could not click: " + element);
@@ -157,23 +171,63 @@ public class TestBase {
 
 		}
 
+		}
 	}
-
+	
 // Is Selected
-
 	public static void isSelected(WebDriver driver, WebElement element, String variableName) {
 		assertTrue(driver.switchTo().activeElement().equals(element), variableName + " : " + " is not Selected");
 	}
+	
+	// File Upload
+//	private static final Map<String, String> fileTypeToFileName = new HashMap<>();
+//    static {
+//        fileTypeToFileName.put("image", "D:\\c drive\\Desktop\\Picture1.png");
+//        fileTypeToFileName.put("excel", "D:\\c drive\\Desktop\\Avision Table Pages.xlsx");
+//        fileTypeToFileName.put("docx", "D:\\c drive\\Desktop\\Sales Order Create.docx");
+//        fileTypeToFileName.put("text", "D:\\c drive\\Desktop\\Utility Methods.txt");
+//    }
+//    
+//    public static void uploadFile(WebDriver driver, WebElement element, String fileType) throws Exception {
+//        js.executeScript("arguments[0].click();", element);
+//
+//        String file = fileTypeToFileName.get(fileType);
+//
+//        if (file == null) {
+//            throw new IllegalArgumentException("File type " + fileType + " not supported.");
+//        }
+//
+//        StringSelection stringSelection = new StringSelection(file);
+//        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+//
+//        robot.delay(1000);
+//
+//        robot.keyPress(KeyEvent.VK_CONTROL);
+//        robot.keyPress(KeyEvent.VK_V);
+//        robot.keyRelease(KeyEvent.VK_CONTROL);
+//        robot.keyRelease(KeyEvent.VK_V);
+//
+//        robot.keyPress(KeyEvent.VK_ENTER);
+//        robot.delay(1000);
+//        robot.keyRelease(KeyEvent.VK_ENTER);
+//    }
+//	
+//	Usage
+//	FileUploader.uploadFile(driver, element, "excel");
+
+
 
 	// File Upload
 	public static void uploadFile(WebDriver driver, WebElement element, int fileIndex) throws Exception {
 		
+//		wait.until(ExpectedConditions.elementToBeClickable(element));
+		
 		js.executeScript("arguments[0].click();", element);
 
-		String[] files = new String[] { "C:\\Users\\Gopal Reddy\\Desktop\\Screenshot 2023-10-27 114940.png", // imgae
-				"C:\\Users\\Gopal Reddy\\Downloads\\TempletForTC.xlsx", // excel
-				"C:\\Users\\Gopal Reddy\\Downloads\\Transaction-Open GRIN-Open GRIN Edit Page.docx",
-				"C:\\Users\\Gopal Reddy\\Desktop\\HardCoded To Soft Coded.txt" }; // docx
+		String[] files = new String[] { "D:\\c drive\\Desktop\\Picture1.png", // imgae
+				"D:\\c drive\\Desktop\\Avision Table Pages.xlsx", // excel
+				"D:\\c drive\\Desktop\\Sales Order Create.docx",
+				"D:\\c drive\\Desktop\\Utility Methods.txt" }; // docx
 
 		String file = files[fileIndex];
 

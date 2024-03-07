@@ -66,6 +66,9 @@ public class HomePage extends TestBase {
 
 	@FindBy(xpath = "(//a[@routerlink='master/item-price-list/form'])[1]")
 	WebElement itemPriceListCreate;
+	
+	@FindBy(xpath = "//a[@routerlink='master/item-price-list/table']")
+	WebElement itmePriceListView_Modify;
 
 	@FindBy(xpath = "//span[text()='RFQ']")
 	WebElement rfq;
@@ -477,6 +480,15 @@ public class HomePage extends TestBase {
 		itemPriceListCreate.sendKeys(Keys.ENTER);
 		click(driver, threeLinesSideBarIcon);
 	}
+	
+	public void clickonSalesPriceListEdit() {
+		click(driver, threeLinesSideBarIcon);
+		click(driver, sales);
+		click(driver, itemPriceList);
+		click(driver, itmePriceListView_Modify);
+		click(driver, threeLinesSideBarIcon);
+	}
+
 
 	public void clickonRFQCreate() {
 		js.executeScript("arguments[0].click();", threeLinesSideBarIcon);
@@ -537,6 +549,7 @@ public class HomePage extends TestBase {
 		itemMaster.click();
 		modifyorViewItemMaster.sendKeys(Keys.ENTER);
 		js.executeScript("arguments[0].click();", editButton);
+		click(driver, threeLinesSideBarIcon);
 
 	}
 

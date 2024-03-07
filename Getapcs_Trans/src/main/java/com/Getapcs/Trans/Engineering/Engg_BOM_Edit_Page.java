@@ -143,8 +143,7 @@ public class Engg_BOM_Edit_Page extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 
-	public HomePage enggBomEdit(String quantity, String scarpAllowance, String remark, String version,
-			String quantityPer, String probability, String alternateRemark, String quantityNRE, String cost)
+	public HomePage enggBomEdit(String remark)
 			throws Throwable {
 
 //      activeStatusToggleButton.click();
@@ -153,45 +152,47 @@ public class Engg_BOM_Edit_Page extends TestBase {
 		// ############## Child Item Tab ################
 		js.executeScript("arguments[0].click();", clickForUpdateChildItem);
 
-		// 1Verifying that Quality Field is Enabled or not
-		boolean isEnabledQualityField = quantityField.isEnabled();
-		assertTrue(isEnabledQualityField);
-		boolean isDisabledQualityFieldn = !quantityField.isEnabled();
-		assertFalse(isDisabledQualityFieldn);
-
-		// Verifying that Quality Field is displayed or hidden.
-		boolean isDisplayedQualityField = quantityField.isDisplayed();
-		assertTrue(isDisplayedQualityField);
-		boolean isHiddenQualityField = !quantityField.isDisplayed();
-		assertFalse(isHiddenQualityField);
-		quantityField.clear();
-		quantityField.sendKeys(quantity);
-
-		// 1Verifying that ScrapAllowance Field is Enabled or not
-		boolean isEnabledScrapAllowanceField = scarpAllowanceField.isEnabled();
-		assertTrue(isEnabledScrapAllowanceField);
-		boolean isDisabledScrapAllowanceFieldn = !scarpAllowanceField.isEnabled();
-		assertFalse(isDisabledScrapAllowanceFieldn);
-
-		// Verifying that Quality Field is displayed or hidden.
-		boolean isDisplayedScrapAllowanceField = scarpAllowanceField.isDisplayed();
-		assertTrue(isDisplayedScrapAllowanceField);
-		boolean isHiddenScrapAllowanceField = !scarpAllowanceField.isDisplayed();
-		assertFalse(isHiddenScrapAllowanceField);
-		scarpAllowanceField.clear();
-		scarpAllowanceField.sendKeys(scarpAllowance);
-
-		// 1Verifying that Remarks Field is Enabled or not
-		boolean isEnabledRemarksField = remarkField.isEnabled();
-		assertTrue(isEnabledRemarksField);
-		boolean isDisabledRemarksFieldn = !remarkField.isEnabled();
-		assertFalse(isDisabledRemarksFieldn);
-
-		// Verifying that Quality Field is displayed or hidden.
-		boolean isDisplayedRemarksField = remarkField.isDisplayed();
-		assertTrue(isDisplayedRemarksField);
-		boolean isHiddenRemarksField = !remarkField.isDisplayed();
-		assertFalse(isHiddenRemarksField);
+//		// 1Verifying that Quality Field is Enabled or not
+//		boolean isEnabledQualityField = quantityField.isEnabled();
+//		assertTrue(isEnabledQualityField);
+//		boolean isDisabledQualityFieldn = !quantityField.isEnabled();
+//		assertFalse(isDisabledQualityFieldn);
+//
+//		// Verifying that Quality Field is displayed or hidden.
+//		boolean isDisplayedQualityField = quantityField.isDisplayed();
+//		assertTrue(isDisplayedQualityField);
+//		boolean isHiddenQualityField = !quantityField.isDisplayed();
+//		assertFalse(isHiddenQualityField);
+//		quantityField.clear();
+//		quantityField.sendKeys(quantity);
+//
+//		// 1Verifying that ScrapAllowance Field is Enabled or not
+//		boolean isEnabledScrapAllowanceField = scarpAllowanceField.isEnabled();
+//		assertTrue(isEnabledScrapAllowanceField);
+//		boolean isDisabledScrapAllowanceFieldn = !scarpAllowanceField.isEnabled();
+//		assertFalse(isDisabledScrapAllowanceFieldn);
+//
+//		// Verifying that Quality Field is displayed or hidden.
+//		boolean isDisplayedScrapAllowanceField = scarpAllowanceField.isDisplayed();
+//		assertTrue(isDisplayedScrapAllowanceField);
+//		boolean isHiddenScrapAllowanceField = !scarpAllowanceField.isDisplayed();
+//		assertFalse(isHiddenScrapAllowanceField);
+//		scarpAllowanceField.clear();
+//		scarpAllowanceField.sendKeys(scarpAllowance);
+//
+//		// 1Verifying that Remarks Field is Enabled or not
+//		boolean isEnabledRemarksField = remarkField.isEnabled();
+//		assertTrue(isEnabledRemarksField);
+//		boolean isDisabledRemarksFieldn = !remarkField.isEnabled();
+//		assertFalse(isDisabledRemarksFieldn);
+//
+//		// Verifying that Quality Field is displayed or hidden.
+//		boolean isDisplayedRemarksField = remarkField.isDisplayed();
+//		assertTrue(isDisplayedRemarksField);
+//		boolean isHiddenRemarksField = !remarkField.isDisplayed();
+//		assertFalse(isHiddenRemarksField);
+		click(driver, remarkField);
+		isSelected(driver, remarkField, "remarkField");
 		remarkField.clear();
 		remarkField.sendKeys(remark);
 

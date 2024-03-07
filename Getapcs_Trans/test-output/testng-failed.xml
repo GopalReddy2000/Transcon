@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Getapcs.Trans.TEST.PrimaryMaster_Testing">
+      <class name="com.Getapcs.Trans.TEST.TEST_Create">
         <methods>
-          <include name="tearDown"/>
+          <include name="afterTest"/>
           <include name="setUp"/>
-          <include name="verifyCustomerCreate"/>
+          <include name="verifySalesRFQCreate"/>
         </methods>
-      </class> <!-- com.Getapcs.Trans.TEST.PrimaryMaster_Testing -->
+      </class> <!-- com.Getapcs.Trans.TEST.TEST_Create -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

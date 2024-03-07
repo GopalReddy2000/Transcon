@@ -1,7 +1,5 @@
 package com.Getapcs.Trans.TEST;
 
-import java.awt.AWTException;
-
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -9,8 +7,10 @@ import org.testng.annotations.Test;
 import com.Getapcs.Trans.BASECLASS.TestBase;
 import com.Getapcs.Trans.Engineering.EnggBOM_ReleaseBOM;
 import com.Getapcs.Trans.Engineering.Engg_BOM_Create_Page;
+import com.Getapcs.Trans.Engineering.Engg_BOM_Edit_Page;
 import com.Getapcs.Trans.Engineering.Item_Master_Create_Page;
 import com.Getapcs.Trans.Engineering.Item_Master_Create_Page1;
+import com.Getapcs.Trans.Engineering.Item_Master_Edit_Page;
 import com.Getapcs.Trans.FG_SA.InventryReports.InventryReportAfterGrin;
 import com.Getapcs.Trans.HomeLogin.HomePage;
 import com.Getapcs.Trans.HomeLogin.LoginPage;
@@ -28,8 +28,10 @@ import com.Getapcs.Trans.InventryReports.InventryReportAfterReturnInvoice;
 import com.Getapcs.Trans.InventryReports.InventryReportAfterReturnODO;
 import com.Getapcs.Trans.InventryReports.InventryReportBeforeOpenGrin;
 import com.Getapcs.Trans.Sales.ItemPriceList_CreatePage;
+import com.Getapcs.Trans.Sales.ItemPriceList_EditPage;
 import com.Getapcs.Trans.Sales.QuoteCreatePage;
 import com.Getapcs.Trans.Sales.RFQ_CreatePage;
+import com.Getapcs.Trans.Sales.RFQ_EditPage;
 import com.Getapcs.Trans.Sales.RFQ_ReleaseCS;
 import com.Getapcs.Trans.Sales.RFQ_ReleaseEngg;
 import com.Getapcs.Trans.Sales.VerifyLPCostingCreate;
@@ -59,24 +61,26 @@ import com.Getapcs.Trans.Transaction.ShopOrderConfirmation;
 import com.Getapcs.Trans.Transaction.VerifyInvoiceCreate;
 import com.Getapcs.Trans.Transaction.openDeliveryOrder;
 
-
-
 public class TEST_Create extends TestBase {
 
 	public final static String priceList = "TEST PriceList 1";
-	public final static String fg = "FG-1";
-	public final static String pp = "PP-1";
+	public final static String fg = "FG-2";
+	public final static String pp = "PP-2";
 
 	LoginPage loginPage;
 	HomePage homePage;
 
 	Item_Master_Create_Page itemMasterCreatePage;
 	Item_Master_Create_Page1 itemMasterCreatePage1;
+	Item_Master_Edit_Page itemMasterEditPage;
 	Engg_BOM_Create_Page enggBomCreatePage;
+	Engg_BOM_Edit_Page enggBomEditPage;
 	Price_List Price_List;
 	EnggBOM_ReleaseBOM releaseBom;
 	ItemPriceList_CreatePage priceList_CreatePage;
+	ItemPriceList_EditPage itemPriceListEdit;
 	RFQ_CreatePage rfq_CreatePage;
+	RFQ_EditPage rfqEditPage;
 	RFQ_ReleaseCS rfq_ReleaseCS;
 	RFQ_ReleaseEngg RFQ_ReleaseEngg;
 	VerifySourcing sourcing;
@@ -122,7 +126,6 @@ public class TEST_Create extends TestBase {
 //
 //	Item_Master_Edit_Page itemMasterEditPage;
 //	Engg_BOM_Edit_Page enggBomEditPage;
-//	ItemPriceList_EditPage PriceList_EditPage;
 //	RFQ_EditPage rfq_EditPage;
 //	QuoteEditPage quoteEditPage;
 //
@@ -144,12 +147,14 @@ public class TEST_Create extends TestBase {
 		Price_List = new Price_List();
 		itemMasterCreatePage = new Item_Master_Create_Page();
 		itemMasterCreatePage1 = new Item_Master_Create_Page1();
-//		itemMasterEditPage = new Item_Master_Edit_Page();
+		itemMasterEditPage = new Item_Master_Edit_Page();
 		enggBomCreatePage = new Engg_BOM_Create_Page();
-//		enggBomEditPage = new Engg_BOM_Edit_Page();
+		enggBomEditPage = new Engg_BOM_Edit_Page();
 		releaseBom = new EnggBOM_ReleaseBOM();
 		priceList_CreatePage = new ItemPriceList_CreatePage();
+		itemPriceListEdit = new ItemPriceList_EditPage();
 		rfq_CreatePage = new RFQ_CreatePage();
+		rfqEditPage = new RFQ_EditPage();
 		sourcing = new VerifySourcing();
 		lpCosting = new VerifyLPCostingCreate();
 		lpCostingRelease = new VerifyLPCostingRelease();
@@ -212,7 +217,6 @@ public class TEST_Create extends TestBase {
 		VerifyInvoiceCreate = new VerifyInvoiceCreate();
 	}
 
-
 //	@Test(priority = 1)
 //	public void verifyPrice_ListCreate() throws AWTException, InterruptedException {
 //		Thread.sleep(2000);
@@ -222,30 +226,39 @@ public class TEST_Create extends TestBase {
 //		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
 
-	@Test(priority = 2)
-	public void verifyItemMasterCreate() throws Throwable {
-
-		homePage.clickOnItemMasterCreate();
-		itemMasterCreatePage.itemMasterCreate(fg, "Test Description", "76543456", "Test Manufacturer or CustomerName",
-				"DR-N-5676", "REV-43", "T-DOC-RET-21", "10", "30", "300", "323", "TEST-FootPrint", "TEST ProcessStep",
-				"TEST descriptinRouting", "9", "10", "100", "5", "10", "Test Reorder", "TEST 2Bin", "TEST LeadTime",
-				"TEST expiryDays", "TEST Inspection Int Days", "TEST specialInstructions", "TEST instructions", "10",
-				"TEST BatchSize",
-				"565");
-		Thread.sleep(4000);
-		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
-
-		homePage.clickOnItemMasterCreate();
-		itemMasterCreatePage1.itemMasterCreate(pp, "Test Description", "76543456", "Test Manufacturer or CustomerName",
-				"DR-N-5676", "REV-43", "T-DOC-RET-21", "10", "30", "300", "323", "TEST-FootPrint", "TEST ProcessStep",
-				"TEST descriptinRouting", "9", "10", "100", "5", "10", "Test Reorder", "TEST 2Bin", "TEST LeadTime",
-				"TEST expiryDays", "TEST Inspection Int Days", "TEST specialInstructions", "TEST instructions", "10",
-				"TEST BatchSize",
-				"565");
-		Thread.sleep(4000);
-		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
-	}
-
+//	@Test(priority = 2)
+//	public void verifyItemMasterCreate() throws Throwable {
+//
+//		homePage.clickOnItemMasterCreate();
+//		itemMasterCreatePage.itemMasterCreate(fg, "Test Description", "76543456", "Test Manufacturer or CustomerName",
+//				"DR-N-5676", "REV-43", "T-DOC-RET-21", "10", "30", "300", "323", "TEST-FootPrint", "TEST ProcessStep",
+//				"TEST descriptinRouting", "9", "10", "100", "5", "10", "Test Reorder", "TEST 2Bin", "TEST LeadTime",
+//				"TEST expiryDays", "TEST Inspection Int Days", "TEST specialInstructions", "TEST instructions", "10",
+//				"TEST BatchSize", "565");
+//		Thread.sleep(2000);
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+//
+//		homePage.clickOnItemMasterEdit();
+//		itemMasterEditPage.itemMasterEdit("Test Description FG");
+//		Thread.sleep(2000);
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+//
+//		homePage.clickOnItemMasterCreate();
+//		itemMasterCreatePage1.itemMasterCreate(pp, "Test Description", "76543456", "Test Manufacturer or CustomerName",
+//				"DR-N-5676", "REV-43", "T-DOC-RET-21", "10", "30", "300", "323", "TEST-FootPrint", "TEST ProcessStep",
+//				"TEST descriptinRouting", "9", "10", "100", "5", "10", "Test Reorder", "TEST 2Bin", "TEST LeadTime",
+//				"TEST expiryDays", "TEST Inspection Int Days", "TEST specialInstructions", "TEST instructions", "10",
+//				"TEST BatchSize", "565");
+//		Thread.sleep(2000);
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+//
+//		homePage.clickOnItemMasterEdit();
+//		itemMasterEditPage.itemMasterEdit("Test Description PP");
+////		Thread.sleep(2000);
+//		waitUntilAPILoaded(driver);
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+//	}
+//
 //	@Test(priority = 3)
 //	public void verifyBomCreate() throws Throwable {
 //
@@ -259,6 +272,16 @@ public class TEST_Create extends TestBase {
 //				"TEST Alternate Remark", // alternateRemark
 //				"1", // quantityNRE
 //				"20");// cost
+////		Thread.sleep(2000);
+//		waitUntilAPILoaded(driver);
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+//	}
+//	
+//	@Test(priority = 4)
+//	public void verifyBomEdit() throws Throwable {
+//		
+//		homePage.clickOnBomEditPage();
+//		enggBomEditPage.enggBomEdit("Test Remark");
 //		Thread.sleep(4000);
 //		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
@@ -267,7 +290,7 @@ public class TEST_Create extends TestBase {
 //	public void verifyReleaseBom() throws Throwable {
 //		homePage.clickOnReleaseBomPage();
 //		releaseBom.releaseBom("Test Remark");// Remark
-//		Thread.sleep(4000);
+//		waitUntilAPILoaded(driver);
 //		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
 //
@@ -280,15 +303,36 @@ public class TEST_Create extends TestBase {
 //		Thread.sleep(4000);
 //		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
-//
+//	
 //	@Test(priority = 6)
+//	public void verifySalesItemPriceListEdit() throws AWTException, InterruptedException {
+//
+//		homePage.clickonSalesPriceListEdit();
+//		itemPriceListEdit.ItemPriceListEdit("50", "200", "50", "100", "200", "40");
+//
+//		Thread.sleep(4000);
+//		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+//	}
+//
+//	@Test(priority = 7)
 //	public void verifySalesRFQCreate() throws Throwable {
 //
+//		homePage.clickonRFQCreate();
 //		rfq_CreatePage.RFQCreate();
 //
 //		Thread.sleep(4000);
 //		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
+//	
+	@Test(priority = 7)
+	public void verifySalesRFQEdit() throws Throwable {
+
+		homePage.clickonSalesRfqModifyorView();
+		rfqEditPage.RFQEdit();
+
+		Thread.sleep(4000);
+		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
+	}
 //
 //	@Test(priority = 7)
 //	public void verifySalesRFQCS() throws Throwable {
@@ -793,7 +837,6 @@ public class TEST_Create extends TestBase {
 //		Thread.sleep(4000);
 //		driver.navigate().to("https://demo-tras.getapcs.com/dashboard");
 //	}
-
 
 	@AfterTest
 	public void afterTest() {

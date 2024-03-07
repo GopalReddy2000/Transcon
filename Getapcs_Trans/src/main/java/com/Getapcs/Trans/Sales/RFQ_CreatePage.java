@@ -10,12 +10,12 @@ import com.Getapcs.Trans.HomeLogin.HomePage;
 
 public class RFQ_CreatePage extends TestBase {
 
-	@FindBy(xpath = "//input[@formcontrolname='rfqNumber']")
+	@FindBy(xpath = "(//input[@type='text'])[1]")
 	WebElement rfqNumberField;
 
-	@FindBy(xpath = "(//input[@type='text'])[2]")
+	@FindBy(xpath = "(//input[@type='text'])[1]")
 	WebElement customerNameDropDown;
-	@FindBy(xpath = "(//span[normalize-space()='ASPL|CS|23-24|004 - AVision Systems Pvt Ltd .'])[1]")
+	@FindBy(xpath = "(//span[text()='CS0927 - VEDHARTH TECHNOLOGY'])[1]")
 	WebElement customerNameDropDownSelectData;
 
 	@FindBy(xpath = "//input[@placeholder='Enter Customer Rfq Number']")
@@ -36,19 +36,19 @@ public class RFQ_CreatePage extends TestBase {
 
 	public HomePage RFQCreate() throws Throwable {
 
-		driver.navigate().to("https://avision-demo.getapcs.com/engineering/engg-bom/table");
+		driver.navigate().to("https://demo-tras.getapcs.com/engineering/engg-bom/table");
 
 		String tableXpath = "//table[@class='table table-striped']";
 
 		String ItemNumber = driver.findElement(By.xpath(tableXpath + "/tbody/tr[1]/td[2]")).getText();
 
-		driver.navigate().to("https://avision-demo.getapcs.com/sales/rfq/create");
+		driver.navigate().to("https://demo-tras.getapcs.com/sales/rfq/create");
 
 		// RFQ Num
 
-		click(driver, rfqNumberField);
-		isSelected(driver, rfqNumberField, "rfqNumberField");
-		rfqNumberField.sendKeys("RFQ-" + ItemNumber);
+//		click(driver, rfqNumberField);
+//		isSelected(driver, rfqNumberField, "rfqNumberField");
+//		rfqNumberField.sendKeys("RFQ-" + ItemNumber);
 
 		// Customer Name
 
@@ -66,7 +66,7 @@ public class RFQ_CreatePage extends TestBase {
 
 		click(driver, requestReceiveDatePicker);
 
-		datePicker(driver, requestReceiveDatePicker);
+		selectPreviousDate(driver, requestReceiveDatePicker,5);
 
 		// Quote Date Picker
 

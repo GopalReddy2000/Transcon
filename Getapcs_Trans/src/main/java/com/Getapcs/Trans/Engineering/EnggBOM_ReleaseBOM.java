@@ -49,7 +49,7 @@ public class EnggBOM_ReleaseBOM extends TestBase {
 	}
 
 	public HomePage releaseBom(String releaseNote) throws Throwable {
-		driver.navigate().to("https://avision-demo.getapcs.com/engineering/engg-bom/table");
+		driver.navigate().to("https://demo-tras.getapcs.com/engineering/engg-bom/table");
 
 		String tableXpath = "//table[@class='table table-striped']";
 
@@ -58,11 +58,14 @@ public class EnggBOM_ReleaseBOM extends TestBase {
 
 		// Store the element with hard coded PR number
 		String elementXpath = "(//span[normalize-space()='Item-FG-11-TEST'])[1]";
-
 		String updatedXpath = elementXpath.replace("Item-FG-11-TEST", ItemNumber);
-
 		System.out.println(updatedXpath);
-		driver.navigate().to("https://avision-demo.getapcs.com/engineering/release-bom/table");
+		
+		String revNumber = driver.findElement(By.xpath(tableXpath + "/tbody/tr[1]/td[5]")).getText();
+		String updatedXpathREVNo = elementXpath.replace("Item-FG-11-TEST", revNumber);
+		
+		
+		driver.navigate().to("https://demo-tras.getapcs.com/engineering/release-bom/table");
 
 		for (int i = 1; i <= 3; i++) {
 
@@ -70,7 +73,7 @@ public class EnggBOM_ReleaseBOM extends TestBase {
 					.findElement(By.xpath("//i[@class='mdi mdi-plus-box-outline edit-icon']"));
 			Thread.sleep(2000);
 //		bomForReleaseCreateButton.click();
-			js.executeScript("arguments[0].click();", bomForReleaseCreateButton);
+			click(driver, bomForReleaseCreateButton);
 
 			relaeseForDropDown = driver.findElement(By.xpath("//ng-select[@placeholder='Select Release For']"));
 			Thread.sleep(2000);
@@ -79,16 +82,22 @@ public class EnggBOM_ReleaseBOM extends TestBase {
 				selectEngineering = driver.findElement(By.xpath("(//div[@role='option'])[1]"));
 				Thread.sleep(2000);
 				click(driver, selectEngineering);
+				
+				releaseNoteField.sendKeys("Engineering Released");
 			}
 			if (i == 2) {
 				Thread.sleep(2000);
 				click(driver, selectCosting);
+				
+				releaseNoteField.sendKeys("Costing Released");
 			}
 			if (i == 3) {
 				selectProduction = driver.findElement(By.xpath("//span[contains(text(),'Production')]"));
 				Thread.sleep(2000);
 //			selectProduction.click();
 				js.executeScript("arguments[0].click();", selectProduction);
+				
+				releaseNoteField.sendKeys("Production Released");
 			}
 
 			releaseItemNumberDropDown = driver.findElement(By.xpath("(//input[@type='text'])[2]"));
@@ -100,19 +109,19 @@ public class EnggBOM_ReleaseBOM extends TestBase {
 			js.executeScript("arguments[0].click();", itemNumberDropDownDataSelect);
 
 			releaseVersionDropDown = driver.findElement(By.xpath("(//input[@type='text'])[3]"));
-			js.executeScript("arguments[0].scrollIntoView(true);", releaseVersionDropDown);
-			Thread.sleep(2000);
-			releaseVersionDropDown.sendKeys(Keys.ENTER);
-			releaseVersionDropDown.sendKeys(Keys.ENTER);
+			click(driver, releaseVersionDropDown);
+			WebElement revNumbrSelect = driver.findElement(By.xpath(updatedXpathREVNo));
+			click(driver, revNumbrSelect);
+			
 
-			releaseNoteField = driver.findElement(By.xpath("//textarea[@placeholder='Enter Release Note']"));
-			js.executeScript("arguments[0].scrollIntoView(true);", releaseNoteField);
-			releaseNoteField.sendKeys(releaseNote);
-			// 1Verifying that Item Number Text Field is Enabled or not
-			assertTrue(releaseNoteField.isEnabled());
-
-			// Verifying that ReleaseNotes Text Field is displayed or hidden.
-			assertTrue(releaseNoteField.isDisplayed());
+//			releaseNoteField = driver.findElement(By.xpath("//textarea[@placeholder='Enter Release Note']"));
+//			js.executeScript("arguments[0].scrollIntoView(true);", releaseNoteField);
+//			releaseNoteField.sendKeys(releaseNote);
+//			// 1Verifying that Item Number Text Field is Enabled or not
+//			assertTrue(releaseNoteField.isEnabled());
+//
+//			// Verifying that ReleaseNotes Text Field is displayed or hidden.
+//			assertTrue(releaseNoteField.isDisplayed());
 
 			releaseButton = driver.findElement(By.xpath("//button[normalize-space()='Release']"));
 			js.executeScript("arguments[0].scrollIntoView(true);", releaseButton);

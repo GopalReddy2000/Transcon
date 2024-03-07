@@ -1,14 +1,9 @@
 package com.Getapcs.Trans.Engineering;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.Getapcs.Trans.BASECLASS.TestBase;
 import com.Getapcs.Trans.HomeLogin.HomePage;
@@ -75,7 +70,7 @@ public class Engg_BOM_Create_Page extends TestBase {
 	@FindBy(xpath = "(//input[@type='text'])[5]")
 	WebElement customerNameField;
 
-	@FindBy(xpath = "(//span[normalize-space()='AVision Systems Pvt Ltd .'])[1]")
+	@FindBy(xpath = "(//span[normalize-space()='VEDHARTH TECHNOLOGY'])[1]")
 	WebElement customerNameFieldDataSelect;
 
 	@FindBy(xpath = "//input[@placeholder='Enter Quantity']")
@@ -136,17 +131,17 @@ public class Engg_BOM_Create_Page extends TestBase {
 	public HomePage bomCreate(String quantity, String scarpAllowance, String remark, String version, String quantityPer,
 			String probability, String alternateRemark, String quantityNRE, String cost) throws Throwable {
 
-		driver.navigate().to("https://avision-demo.getapcs.com/engineering/item-master/table");
+		driver.navigate().to("https://demo-tras.getapcs.com/engineering/item-master/table");
 
 		String tableXpath = "//table[@class='table table-striped']";
 
-		// Get the first PR number text from table
-		String ItemNumber = driver.findElement(By.xpath(tableXpath + "/tbody/tr[2]/td[2]")).getText();
+		// Get the first FG number text from table
+		String ItemNumberFG = driver.findElement(By.xpath(tableXpath + "/tbody/tr[2]/td[2]")).getText();
 
 		// Store the element with hard coded PR number
 		String elementXpath = "(//span[normalize-space()='Item-FG-11-TEST'])[1]";
 
-		String updatedXpath = elementXpath.replace("Item-FG-11-TEST", ItemNumber);
+		String updatedXpath = elementXpath.replace("Item-FG-11-TEST", ItemNumberFG);
 
 		System.out.println(updatedXpath);
 
@@ -155,46 +150,32 @@ public class Engg_BOM_Create_Page extends TestBase {
 		String tableXpath2 = "//table[@class='table table-striped']";
 
 		// Get the first PR number text from table
-		String ItemNum = driver.findElement(By.xpath(tableXpath2 + "/tbody/tr[1]/td[2]")).getText();
+		String ItemNumPP = driver.findElement(By.xpath(tableXpath2 + "/tbody/tr[1]/td[2]")).getText();
 
 		// Store the element with hard coded PR number
 		String elementXpath1 = "(//span[normalize-space()='Item-FG-11-TEST'])[1]";
 
-		String updatedXpath1 = elementXpath1.replace("Item-FG-11-TEST", ItemNum + "-Test Description");
+		String updatedXpath1 = elementXpath1.replace("Item-FG-11-TEST", ItemNumPP + "-Test Description PP");
 
 		System.out.println(updatedXpath1);
 
-		driver.navigate().to("https://avision-demo.getapcs.com/engineering/engg-bom/create");
+		driver.navigate().to("https://demo-tras.getapcs.com/engineering/engg-bom/create");
 
 		// Item Number
 
 		// Verify that itemNumber Field is Displayed or not
-		boolean isDisableditemNumberFieldn = !itemNumberForItem.isDisplayed();
-		Assert.assertFalse(isDisableditemNumberFieldn);
-
-		js.executeScript("arguments[0].scrollIntoView(true);", itemNumberForItem);
 		Thread.sleep(5000);
 		click(driver, itemNumberForItem);
-
-		// Verify that itemNumber Field is clickable or not
-		WebElement itemNumberFieldFocusedElement = driver.switchTo().activeElement();
-		boolean itemNumberFieldIsSelected = itemNumberFieldFocusedElement.equals(itemNumberForItem);
-		Assert.assertTrue(itemNumberFieldIsSelected, "itemNumber Text Field is not Selected");
+		isSelected(driver, itemNumberForItem, "itemNumberForItem");
 
 		WebElement itemNumberDropDownDataSelect = driver.findElement(By.xpath(updatedXpath));
-		js.executeScript("arguments[0].click();", itemNumberDropDownDataSelect);
+		click(driver, itemNumberDropDownDataSelect);
 
 		// Verifying that ItemDescription Field is displayed or hidden.
-		boolean isDisplayedItemDescriptionField = itemDescriptionElement.isDisplayed();
-		assertTrue(isDisplayedItemDescriptionField);
-		String itemDescriptionElementText = itemDescriptionElement.getText().trim();
-		System.out.println("Item Description : " + itemDescriptionElementText + "\n");
+		dataPrint(driver, itemDescriptionElement, "itemDescriptionElement");
 
 		// Verifying that Item Type Field is displayed or hidden.
-		boolean isDisplayedItemTypeField = itemTypeElement.isDisplayed();
-		assertTrue(isDisplayedItemTypeField);
-		String itemTypeElementValue = (String) js.executeScript("return arguments[0].value;", itemTypeElement);
-		System.out.println("Item Type : " + itemTypeElementValue + "\n");
+		dataPrintFromInputtag(driver, itemTypeElement, "itemTypeElement");
 
 //       activeStatusToggleButton.click();
 //       activeStatusToggleButton.click();
@@ -202,203 +183,97 @@ public class Engg_BOM_Create_Page extends TestBase {
 		// ############## Child Item Tab ################
 
 		// Verify that itemNumber Field is Displayed or not
-		boolean isDisableditemNumberChildItem = !itemNumberForChildItem.isDisplayed();
-		Assert.assertFalse(isDisableditemNumberChildItem);
 
-		js.executeScript("arguments[0].scrollIntoView(true);", itemNumberForChildItem);
-		Thread.sleep(5000);
-		itemNumberForChildItem.click();
-		itemNumberForChildItem.sendKeys(ItemNum);
-
-		// Verify that itemNumber Field is clickable or not
-		WebElement iitemNumberChildItemFocusedElement = driver.switchTo().activeElement();
-		boolean itemNumberChildItemIsSelected = iitemNumberChildItemFocusedElement.equals(itemNumberForChildItem);
-		Assert.assertTrue(itemNumberChildItemIsSelected, "itemNumber Text Field is not Selected");
-
+//		Thread.sleep(5000);
+//		WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+//		
+//		wait1.until((ExpectedCondition<Boolean>) wd ->
+//        ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+		waitUntilAPILoaded(driver);
+		click(driver, itemNumberForChildItem);
+		itemNumberForChildItem.sendKeys(ItemNumPP);
 		WebElement itemNumberForChildItemDataSelect = driver.findElement(By.xpath(updatedXpath1));
-		js.executeScript("arguments[0].click();", itemNumberForChildItemDataSelect);
+		click(driver, itemNumberForChildItemDataSelect);
 
-		// 1Verifying that Quality Field is Enabled or not
-		boolean isEnabledQualityField = quantityField.isEnabled();
-		assertTrue(isEnabledQualityField);
-		boolean isDisabledQualityFieldn = !quantityField.isEnabled();
-		assertFalse(isDisabledQualityFieldn);
-
-		// Verifying that Quality Field is displayed or hidden.
-		boolean isDisplayedQualityField = quantityField.isDisplayed();
-		assertTrue(isDisplayedQualityField);
-		boolean isHiddenQualityField = !quantityField.isDisplayed();
-		assertFalse(isHiddenQualityField);
-
+		click(driver, quantityField);
+		isSelected(driver, quantityField, "quantityField");
 		quantityField.sendKeys(quantity);
 
 		// 1Verifying that ScrapAllowance Field is Enabled or not
-		boolean isEnabledScrapAllowanceField = scarpAllowanceField.isEnabled();
-		assertTrue(isEnabledScrapAllowanceField);
-		boolean isDisabledScrapAllowanceFieldn = !scarpAllowanceField.isEnabled();
-		assertFalse(isDisabledScrapAllowanceFieldn);
-
-		// Verifying that Quality Field is displayed or hidden.
-		boolean isDisplayedScrapAllowanceField = scarpAllowanceField.isDisplayed();
-		assertTrue(isDisplayedScrapAllowanceField);
-		boolean isHiddenScrapAllowanceField = !scarpAllowanceField.isDisplayed();
-		assertFalse(isHiddenScrapAllowanceField);
-
+		click(driver, scarpAllowanceField);
+		isSelected(driver, scarpAllowanceField, "scarpAllowanceField");
 		scarpAllowanceField.sendKeys(scarpAllowance);
 
 		// 1Verifying that Remarks Field is Enabled or not
-		boolean isEnabledRemarksField = remarkField.isEnabled();
-		assertTrue(isEnabledRemarksField);
-		boolean isDisabledRemarksFieldn = !remarkField.isEnabled();
-		assertFalse(isDisabledRemarksFieldn);
-
-		// Verifying that Quality Field is displayed or hidden.
-		boolean isDisplayedRemarksField = remarkField.isDisplayed();
-		assertTrue(isDisplayedRemarksField);
-		boolean isHiddenRemarksField = !remarkField.isDisplayed();
-		assertFalse(isHiddenRemarksField);
-
+		click(driver, remarkField);
+		isSelected(driver, remarkField, "remarkField");
 		remarkField.sendKeys(remark);
 
-		boolean isDisplayedItemTypeChildItemsField = childItemTypeElement.isDisplayed();
-		assertTrue(isDisplayedItemTypeChildItemsField);
-		String childItemTypeElementValue = (String) js.executeScript("return arguments[0].value;",
-				childItemTypeElement);
-		System.out.println("Child Item Type : " + childItemTypeElementValue + "\n");
+		dataPrintFromInputtag(driver, childItemTypeElement, "childItemTypeElement");
 
 		// Verifying that UOM Field is displayed or hidden.
-		boolean isDisplayedUOMField = uOMElement.isDisplayed();
-		assertTrue(isDisplayedUOMField);
-		String uOMElementValue = (String) js.executeScript("return arguments[0].value;", uOMElement);
-		System.out.println("UOM : " + uOMElementValue + "\n");
+		dataPrintFromInputtag(driver, uOMElement, "uOMElement");
 
 		// Verifying that Version Field is displayed or hidden.
-		boolean isDisplayedVersionField = versionElement.isDisplayed();
-		assertTrue(isDisplayedVersionField);
-		String versionElementValue = (String) js.executeScript("return arguments[0].value;", versionElement);
-		System.out.println("Version : " + versionElementValue + "\n");
+		dataPrintFromInputtag(driver, versionElement, "versionElement");
 
-		childItemToggleButton.click();
-		childItemToggleButton.click();
+		click(driver, childItemToggleButton);
+		click(driver, childItemToggleButton);
 
-		addChildItemButton.click();
+		click(driver, addChildItemButton);
 
-		alternatesTab.click();
+		click(driver, alternatesTab);
 
-		alternateItemDropDown.click();
-		alternateItemDropDownDataSeelect.click();
+		click(driver, alternateItemDropDown);
+		click(driver, alternateItemDropDownDataSeelect);
 
 		// Verifying that UOM Field is displayed or hidden.
-		boolean isDisplayedUOMField1 = alternateUOMElement.isDisplayed();
-		assertTrue(isDisplayedUOMField1);
-		String alternateUOMElementValue = (String) js.executeScript("return arguments[0].value;", alternateUOMElement);
-		System.out.println("Alternate Tab UOM : " + alternateUOMElementValue + "\n");
-
+		dataPrintFromInputtag(driver, alternateUOMElement, "alternateUOMElement");
 		// 1Verifying that VersionAlternates Field is Enabled or not
-		boolean isEnabledVersionAlternatesField = versionField.isEnabled();
-		assertTrue(isEnabledVersionAlternatesField);
-		boolean isDisabledVersionAlternatesFieldn = !versionField.isEnabled();
-		assertFalse(isDisabledVersionAlternatesFieldn);
-
-		// Verifying that VersionAlternates Field is displayed or hidden.
-		boolean isDisplayedVersionAlternatesField = versionField.isDisplayed();
-		assertTrue(isDisplayedVersionAlternatesField);
-		boolean isHiddenVersionAlternatesField = !versionField.isDisplayed();
-		assertFalse(isHiddenVersionAlternatesField);
-
+		click(driver, versionField);
+		isSelected(driver, versionField, "versionField");
 		versionField.sendKeys(version);
 
-		customerNameField.sendKeys(Keys.ENTER);
-		js.executeScript("arguments[0].click();", customerNameFieldDataSelect);
+		click(driver, customerNameField);
+		click(driver, customerNameFieldDataSelect);
 
 		// 1Verifying that QualityPer Field is Enabled or not
-		boolean isEnabledQualityPerField = quantityPerFeild.isEnabled();
-		assertTrue(isEnabledQualityPerField);
-		boolean isDisabledQualityPerFieldn = !quantityPerFeild.isEnabled();
-		assertFalse(isDisabledQualityPerFieldn);
-
-		// Verifying that QualityPer Field is displayed or hidden.
-		boolean isDisplayedQualityPerField = quantityPerFeild.isDisplayed();
-		assertTrue(isDisplayedQualityPerField);
-		boolean isHiddenQualityPerField = !quantityPerFeild.isDisplayed();
-		assertFalse(isHiddenQualityPerField);
-
+		click(driver, quantityPerFeild);
+		isSelected(driver, quantityPerFeild, "quantityPerFeild");
 		quantityPerFeild.sendKeys(quantityPer);
 
 		// 1Verifying that ProbabilityofUsage Field is Enabled or not
-		boolean isEnabledProbabilityofUsageField = probabilityofUsageField.isEnabled();
-		assertTrue(isEnabledProbabilityofUsageField);
-		boolean isDisabledProbabilityofUsageFieldn = !probabilityofUsageField.isEnabled();
-		assertFalse(isDisabledProbabilityofUsageFieldn);
-
-		// Verifying that ProbabilityofUsage Field is displayed or hidden.
-		boolean isDisplayedProbabilityofUsageField = probabilityofUsageField.isDisplayed();
-		assertTrue(isDisplayedProbabilityofUsageField);
-		boolean isHiddenProbabilityofUsageField = !probabilityofUsageField.isDisplayed();
-		assertFalse(isHiddenProbabilityofUsageField);
-
+		click(driver, probabilityofUsageField);
+		isSelected(driver, probabilityofUsageField, "probabilityofUsageField");
 		probabilityofUsageField.sendKeys(probability);
 
-		alternateitemNumberDropDown.click();
-		alternateitemNumberDropDownDataSeelect.click();
+		click(driver, alternateitemNumberDropDown);
+		click(driver, alternateitemNumberDropDownDataSeelect);
 
-//		WebElement RemarksAlternates = driver.findElement(By.xpath("//textarea[@placeholder='Enter Remarks']"));
-
-		// 1Verifying that RemarksAlternates Field is Enabled or not
-		boolean isEnabledRemarksAlternatesField = alternateRemarkField.isEnabled();
-		assertTrue(isEnabledRemarksAlternatesField);
-		boolean isDisabledRemarksAlternatesFieldn = !alternateRemarkField.isEnabled();
-		assertFalse(isDisabledRemarksAlternatesFieldn);
-
-		// Verifying that RemarksAlternates Field is displayed or hidden.
-		boolean isDisplayedRemarksAlternatesField = alternateRemarkField.isDisplayed();
-		assertTrue(isDisplayedRemarksAlternatesField);
-		boolean isHiddenRemarksAlternatesField = !alternateRemarkField.isDisplayed();
-		assertFalse(isHiddenRemarksAlternatesField);
-
+		click(driver, alternateRemarkField);
+		isSelected(driver, alternateRemarkField, "alternateRemarkField");
 		alternateRemarkField.sendKeys(alternateRemark);
 
-		alternateActiveToggleButton.click();
-		alternateActiveToggleButton.click();
+		click(driver, alternateActiveToggleButton);
+		click(driver, alternateActiveToggleButton);
 
-		alternateAddButton.click();
+		click(driver, alternateAddButton);
 
-		nreOrConsumableTab.click();
+		click(driver, nreOrConsumableTab);
 
-		itemNumberDropDowninNRE.click();
-		itemNumberDropDowninNREDataSelect.click();
+		click(driver, itemNumberDropDowninNRE);
+		click(driver, itemNumberDropDowninNREDataSelect);
 
 		// 1Verifying that QualityNRE Field is Enabled or not
-		boolean isEnabledQualityNREField = quantityFieldInNRE.isEnabled();
-		assertTrue(isEnabledQualityNREField);
-		boolean isDisabledQualityNREFieldn = !quantityFieldInNRE.isEnabled();
-		assertFalse(isDisabledQualityNREFieldn);
-
-		// Verifying that QualityNRE Field is displayed or hidden.
-		boolean isDisplayedQualityNREField = quantityFieldInNRE.isDisplayed();
-		assertTrue(isDisplayedQualityNREField);
-		boolean isHiddenQualityNREField = !quantityFieldInNRE.isDisplayed();
-		assertFalse(isHiddenQualityNREField);
+		click(driver, quantityFieldInNRE);
+		isSelected(driver, quantityFieldInNRE, "quantityFieldInNRE");
 
 		quantityFieldInNRE.sendKeys(quantityNRE);
 
-//		WebElement Cost = driver.findElement(By.xpath("//input[@placeholder='Enter Cost']"));
-
-		// 1Verifying that Cost Field is Enabled or not
-		boolean isEnabledCostField = costFieldInNRE.isEnabled();
-		assertTrue(isEnabledCostField);
-		boolean isDisabledCostFieldn = !costFieldInNRE.isEnabled();
-		assertFalse(isDisabledCostFieldn);
-
-		// Verifying that Cost Field is displayed or hidden.
-		boolean isDisplayedCostField = costFieldInNRE.isDisplayed();
-		assertTrue(isDisplayedCostField);
-		boolean isHiddenCostField = !costFieldInNRE.isDisplayed();
-		assertFalse(isHiddenCostField);
-
+		click(driver, costFieldInNRE);
+		isSelected(driver, costFieldInNRE, "costFieldInNRE");
 		costFieldInNRE.sendKeys(cost);
 
-//		WebElement AddNRE = driver.findElement(By.xpath("//button[normalize-space()='Add']"));
 		addButtonInNRE.click();
 
 //Upload File
@@ -407,13 +282,13 @@ public class Engg_BOM_Create_Page extends TestBase {
 
 		click(driver, closeButton);
 
-		System.out.println(driver.getCurrentUrl());
-		Thread.sleep(1000);
+//		System.out.println(driver.getCurrentUrl());
+//		Thread.sleep(1000);
 
 		saveButton.click();
 
-		Thread.sleep(3000);
-		System.out.println(driver.getCurrentUrl());
+//		Thread.sleep(3000);
+//		System.out.println(driver.getCurrentUrl());
 
 //				assertNotEquals(beforeSaveButton, afterSaveButton, "URLs are the same");
 		return new HomePage();
