@@ -1,7 +1,5 @@
 package com.Getapcs.Trans.SA_FG.Transaction;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -97,8 +95,7 @@ public class OQCBinning_SA1 extends TestBase {
 
 		driver.navigate().to("https://avision-demo.getapcs.com/transaction/create-oqc-binning");
 
-		Thread.sleep(Duration.ofSeconds(3));
-
+		Thread.sleep(3000);
 		click(driver, saCheckBox);
 
 //SA Item Number

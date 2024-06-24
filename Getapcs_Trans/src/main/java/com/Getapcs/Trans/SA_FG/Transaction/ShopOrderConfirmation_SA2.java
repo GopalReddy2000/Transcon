@@ -1,7 +1,5 @@
 package com.Getapcs.Trans.SA_FG.Transaction;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -74,7 +72,7 @@ public class ShopOrderConfirmation_SA2 extends TestBase {
 
 //SA Item Number
 
-		Thread.sleep(Duration.ofSeconds(4));
+		Thread.sleep(3000);
 		click(driver, saCheckBox);
 
 		click(driver, saItemNumber);

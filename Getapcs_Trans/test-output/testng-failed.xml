@@ -3,13 +3,87 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Getapcs.Trans.TEST.TEST_Create">
+      <class name="com.Getapcs.Trans.TEST.SecondaryMaster">
         <methods>
-          <include name="afterTest"/>
+          <include name="verifyProcurement_TypeCreate"/>
+          <include name="verifyLanguageEdit"/>
+          <include name="verifyGSTPercentageCreate"/>
+          <include name="verifyPackingInstructionsCreate"/>
+          <include name="verifyPrice_ListCreate"/>
+          <include name="verifyVenderTypeCreate"/>
+          <include name="verifyUOCEdit"/>
+          <include name="verifyPartTypeCreate"/>
+          <include name="verifyShipmentInstructionsCreate"/>
+          <include name="verifyOrderTypeMasterCreate"/>
+          <include name="verifyShipmentModeEdit"/>
+          <include name="verifySegmentCreate"/>
+          <include name="verifyTypeOfCompanyCreate"/>
+          <include name="verifyPayment_TermCreate"/>
+          <include name="verifyDeliveryTermsCreate"/>
+          <include name="verifyQuoteTermsEdit"/>
+          <include name="verifyDeliveryTermsEdit"/>
           <include name="setUp"/>
-          <include name="verifySalesRFQCreate"/>
+          <include name="verifyLanguageCreate"/>
+          <include name="verifyPreferred_Freight_ForwarderEdit"/>
+          <include name="verifyLovcationCreate"/>
+          <include name="verifyTypeOfSolutionCreate"/>
+          <include name="verifyTypeOfSolutionEdit"/>
+          <include name="verifyCustomerCategoryCreate"/>
+          <include name="verifyCustomerTypeEdit"/>
+          <include name="verifyExportUnitTypeCreate"/>
+          <include name="verifyPrice_ListEdit"/>
+          <include name="verifyTypeOfCompanyEdit"/>
+          <include name="tearDown"/>
+          <include name="verifycostCenter"/>
+          <include name="verifyCostingMethodEdit"/>
+          <include name="verifySegmentEdit"/>
+          <include name="verifySalutationsCreate"/>
+          <include name="verifyProcurement_TypeEdit"/>
+          <include name="verifyCustomerTypeCreate"/>
+          <include name="verifyDepartmentCreate"/>
+          <include name="verifyCostingMethod"/>
+          <include name="verifyCustomerCategoryEdit"/>
+          <include name="verifyIncoTermsEdit"/>
+          <include name="verifyMaterialTypeCreate"/>
+          <include name="verifyPayment_TermEdit"/>
+          <include name="verifyNumberOFRoomCreate"/>
+          <include name="verifyVenderTypeEdit"/>
+          <include name="verifyGSTPercentageEdit"/>
+          <include name="verifyShipmentModeCreate"/>
+          <include name="verifyDepartmentEdit"/>
+          <include name="verifyShipmentInstructionsEdit"/>
+          <include name="verifyIncoTermsCreate"/>
+          <include name="verifyPurchase_GroupEdit"/>
+          <include name="verifyWareHouseCreate"/>
+          <include name="verifyUOMEdit"/>
+          <include name="verifyUOMCreate"/>
+          <include name="verifyPreferred_Freight_ForwarderCreate"/>
+          <include name="verifyQuoteTermsCreate"/>
+          <include name="verifyUOCCreate"/>
+          <include name="verifyScopeOfSupplyCreate"/>
+          <include name="verifyRiskCategoryCreate"/>
+          <include name="verifyPurchase_GroupCreate"/>
+          <include name="verifyOrderTypeMasterEdit"/>
+          <include name="verifyLeadTimesCreate"/>
+          <include name="verifyWareHouseEdit"/>
+          <include name="verifyIssuingStockEdit"/>
+          <include name="verifyRiskCategoryEdit"/>
+          <include name="verifyScopeOfSupplyEdit"/>
+          <include name="verifyMaterialTypeEdit"/>
+          <include name="verifyIssuingStockCreate"/>
+          <include name="verifySalutationsEdit"/>
+          <include name="verifyNatureOfRelationshipEdit"/>
+          <include name="verifyVenderCategoryCreate"/>
+          <include name="verifyLovcationEdit"/>
+          <include name="verifyNumberOFRoomEdit"/>
+          <include name="verifycostCenterEdit"/>
+          <include name="verifyNatureOfRelationshipCreate"/>
+          <include name="verifyPackingInstructionsEdit"/>
+          <include name="verifyVenderCategoryEdit"/>
+          <include name="verifyLeadTimesEdit"/>
+          <include name="verifyExportUnitTypeEdit"/>
         </methods>
-      </class> <!-- com.Getapcs.Trans.TEST.TEST_Create -->
+      </class> <!-- com.Getapcs.Trans.TEST.SecondaryMaster -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

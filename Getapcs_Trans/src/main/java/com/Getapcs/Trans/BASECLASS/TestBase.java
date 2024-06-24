@@ -10,8 +10,6 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -39,8 +37,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-
 public class TestBase {
 	public static ChromeDriver driver;
 	public static DevTools devTools;
@@ -54,9 +50,7 @@ public class TestBase {
 	@FindBy(xpath = "(//button[normalize-space()='Close'])[1]")
 	static WebElement closeButton;
 
-	
 	public static void initialization() throws AWTException {
-
 
 		// Incognito Mode Execution
 		options = new ChromeOptions();
@@ -75,11 +69,11 @@ public class TestBase {
 
 		actions = new Actions(driver);
 		robot = new Robot();
-		js = (JavascriptExecutor) driver;
+		js = driver;
 
 		// For Get the Error Status
 
-		devTools = ((ChromeDriver) driver).getDevTools();
+		devTools = driver.getDevTools();
 		devTools.createSession();
 
 		devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
@@ -88,27 +82,24 @@ public class TestBase {
 //        	System.out.println("Send URL :- "+res.getUrl()+"\n"+"\n");
 
 		});
-		
+
 //		 RequestId[] requestId = new RequestId[1];
 
 		devTools.addListener(Network.responseReceived(), response -> {
 			Response res = response.getResponse();
 //        	System.err.println(res.getStatus() + " :- "+res.getStatusText()+"\n"+"\n");
-			 if (!res.getStatus().toString().startsWith("2")) {
-	                System.out.println(
-	                        res.getStatus() + " :- " + res.getStatusText() + "\n" +
-	                                "Error URL: " + res.getUrl() + "\n");
-	                
+			if (!res.getStatus().toString().startsWith("2")) {
+				System.out.println(
+						res.getStatus() + " :- " + res.getStatusText() + "\n" + "Error URL: " + res.getUrl() + "\n");
+
 //	                String payLoad = devTools.send(Network.getResponseBody(requestId[0])).getBody();
 //	                System.out.println(payLoad);
-	            }
-	        });
-	
+			}
+		});
 
 		driver.get("https://demo-tras.getapcs.com/login");
 
 	}
-		
 
 	// Fluent Wait
 	public static WebElement waitForElement(WebDriver driver, WebElement element, int timeout, int pollingInterval) {
@@ -130,55 +121,55 @@ public class TestBase {
 //	element = waitForElement(driver, element, 30, 2);
 //	element.click();
 
-	 public static void waitUntilAPILoaded(WebDriver driver) {
+	public static void waitUntilAPILoaded(WebDriver driver) {
 
-	        // Execute JavaScript to check if there are any active network requests
-	        while (!(Boolean) js.executeScript("return (window.performance.getEntriesByType('resource').filter(function(e) { return e.initiatorType === 'xmlhttprequest' && e.duration === 0; }).length === 0)")) {
-	            try {
-	                Thread.sleep(500); // Wait for 500 milliseconds before checking again
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
-	        }
-	 }
-	
+		// Execute JavaScript to check if there are any active network requests
+		while (!(Boolean) js.executeScript(
+				"return (window.performance.getEntriesByType('resource').filter(function(e) { return e.initiatorType === 'xmlhttprequest' && e.duration === 0; }).length === 0)")) {
+			try {
+				Thread.sleep(500); // Wait for 500 milliseconds before checking again
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 //Click Action
 
 	public static void click(WebDriver driver, WebElement element) {
 		try {
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		wait.until(ExpectedConditions.visibilityOf(element));
-		}catch(Exception e1){
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+			wait.until(ExpectedConditions.visibilityOf(element));
+		} catch (Exception e1) {
 			System.out.println("not displayed");
-		}
-		finally {
-		try {
-			if (!element.isDisplayed()) {
-				throw new NoSuchElementException("Element not visible so could not click: " + element);
-			}
-
-			element.click();
-		} catch (Exception e) {
+		} finally {
 			try {
-				element.sendKeys(Keys.ENTER);
-			} catch (Exception e2) {
-				try {
-					js.executeScript("arguments[0].click();", element);
-				} catch (Exception e3) {
-					actions.click(element).build().perform();
+				if (!element.isDisplayed()) {
+					throw new NoSuchElementException("Element not visible so could not click: " + element);
 				}
-			}
 
-		}
+				element.click();
+			} catch (Exception e) {
+				try {
+					element.sendKeys(Keys.ENTER);
+				} catch (Exception e2) {
+					try {
+						js.executeScript("arguments[0].click();", element);
+					} catch (Exception e3) {
+						actions.click(element).build().perform();
+					}
+				}
+
+			}
 
 		}
 	}
-	
+
 // Is Selected
 	public static void isSelected(WebDriver driver, WebElement element, String variableName) {
 		assertTrue(driver.switchTo().activeElement().equals(element), variableName + " : " + " is not Selected");
 	}
-	
+
 	// File Upload
 //	private static final Map<String, String> fileTypeToFileName = new HashMap<>();
 //    static {
@@ -215,19 +206,18 @@ public class TestBase {
 //	Usage
 //	FileUploader.uploadFile(driver, element, "excel");
 
-
-
 	// File Upload
 	public static void uploadFile(WebDriver driver, WebElement element, int fileIndex) throws Exception {
-		
+
 //		wait.until(ExpectedConditions.elementToBeClickable(element));
-		
+
 		js.executeScript("arguments[0].click();", element);
 
-		String[] files = new String[] { "D:\\c drive\\Desktop\\Picture1.png", // imgae
-				"D:\\c drive\\Desktop\\Avision Table Pages.xlsx", // excel
-				"D:\\c drive\\Desktop\\Sales Order Create.docx",
-				"D:\\c drive\\Desktop\\Utility Methods.txt" }; // docx
+		String[] files = new String[] {
+				"search-ms:displayname=Search%20Results%20in%20Downloads&crumb=System.Generic.String%3Aimage&crumb=location:C%3A%5CUsers%5CW2191%5CDownloads\\image", // imgae
+				"C:\\Users\\W2191\\Desktop\\TESTdatafinal.xlsx", // excel
+				"C:\\Users\\W2191\\Desktop\\Project Documentation.docx", // Docx
+				"C:\\Users\\W2191\\Documents\\123.txt" }; // txt
 
 		String file = files[fileIndex];
 
@@ -308,20 +298,19 @@ public class TestBase {
 
 	// Screen Shot
 	public static void screenShot(String fileName) throws IOException {
-		
+
 		String filePath = ".//Getapcs_Avision//ScreenShot//" + fileName + ".png";
 
-	    // Check if the previous screenshot file exists
-	    File previousScreenshot = new File(filePath);
-	    if (previousScreenshot.exists()) {
-	        // Delete the previous screenshot file
-	        FileUtils.forceDelete(previousScreenshot);
-	    }
-		
+		// Check if the previous screenshot file exists
+		File previousScreenshot = new File(filePath);
+		if (previousScreenshot.exists()) {
+			// Delete the previous screenshot file
+			FileUtils.forceDelete(previousScreenshot);
+		}
+
 		File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenshotFile, new File(filePath));
 
-		
 	}
 
 	// Pagination
